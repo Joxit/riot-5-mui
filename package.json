@@ -5,26 +5,38 @@
   "main": "build/js/riot-mui-min.js",
   "author": "Anton Miroshnichenko",
   "scripts": {
+    "format": "npm run format-html && npm run format-js && npm run format-riot",
+    "format-html": "find src examples -name '*.html' -exec js-beautify --config .jsbeautifyrc -f {} --type html -r \\;",
+    "format-js": "find src examples -name '*.js' -exec js-beautify --config .jsbeautifyrc -f {} --type js -r \\;",
+    "format-riot": "find src examples -name '*.riot' -exec js-beautify --config .jsbeautifyrc -f {} --type html -r \\;",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "rollup -c rollup.config.js"
   },
   "contributors": [
     "Tim Garthwaite <tim@mividstudios.com> (https://github.com/mividtim)"
   ],
-  "keywords": "riot, mui, material, interface",
+  "keywords": [
+    "riot",
+    "mui",
+    "material",
+    "interface"
+  ],
   "license": "MIT",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.24.0",
-    "babel-loader": "^7.0.0-beta.1",
-    "babel-preset-es2015-riot": "^1.1.0",
-    "css-loader": "^0.28.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "node-sass": "^4.5.2",
-    "riotjs-loader": "^4.0.0",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.1",
-    "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.3.2"
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-html": "^0.2.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "js-beautify": "^1.13.0",
+    "riot": "^5.1.4",
+    "rollup": "^2.34.2",
+    "rollup-plugin-app-utils": "^1.0.6",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-riot": "^5.0.0",
+    "rollup-plugin-scss": "^2.6.1",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
