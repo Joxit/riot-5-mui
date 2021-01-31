@@ -1,0 +1,83 @@
+<material-input>
+  <div class="label-placeholder"></div>
+  <div class="input-content {state.value ? 'not-empty' : null } { state.error ? 'error': null }">
+    <label for="input" if="{props.label}">{props.label}</label>
+    <input type="{props.type||'text'}" disabled="{state.disabled}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{state.required}" />
+    <div class="iconWrapper" if="{props.icon}">
+      <material-button center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" rounded="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
+        <slot />
+      </material-button>
+    </div>
+  </div>
+  <div class="underline {state.focused ? 'focused' : null} {state.error ? 'error' : null}">
+    <div class="unfocused-line"></div>
+    <div class="focused-line"></div>
+  </div>
+
+  <script>
+    import Validate from '../../mixins/validate';
+    export default {
+      state: {
+        focused: false,
+        showIcon: false,
+        value: '',
+        disabled: false,
+        required: false,
+        error: false
+      },
+      onMounted() {
+        this.required = "";
+        // Not supported types
+        this.notSupportedTypes = ['date', 'color', 'datetime', 'month', 'range', 'time'];
+        if (this.notSupportedTypes.indexOf(this.props.type) != -1) throw new Error(`Sorry but we do not support ${this.props.type} type yet!`);
+        this.validator = new Validate(this.props);
+        // Attributes
+        this.update({
+          showIcon: false,
+          value: this.props.value || '',
+          disabled: this.props.disabled === '' || this.props.disabled || false,
+          required: this.props.required === '' || this.props.required || false
+        });
+
+        this.$('input').addEventListener('focus', this.changeFocus);
+        this.$('input').addEventListener('blur', this.changeFocus);
+      },
+      onBeforeUpdate(props, states) {
+        this.state.error = states.value.length !== 0 && !this.validator.validate(states.value)
+      },
+      /**
+       * When element focus changed update expressions.
+       */
+      changeFocus(e) {
+        if (this.disabled) return false;
+        this.update({
+          focused: this.$('input') == document.activeElement
+        });
+        if (this.props.focuschanged && (typeof(this.props.focuschanged) === "function")) {
+          this.props.focuschanged(this.focused, e);
+        }
+      },
+      /**
+       * Change input value should change tag behavior.
+       * @param e
+       */
+      changeValue(e) {
+        this.update({
+          value: this.$('input').value
+        });
+        if (this.props.valuechanged && (typeof(this.props.valuechanged) === "function")) {
+          this.props.valuechanged(this.$('input').value, e);
+        }
+      },
+      /**
+       * Fire clicking on icon to outside world
+       * @param e
+       */
+      iconClickHandler(e) {
+        if (this.props.iconclicked && typeof this.props.iconclicked === 'function') {
+          this.props.iconclicked.call(this, e);
+        }
+      }
+    }
+  </script>
+</material-input>
