@@ -2,7 +2,7 @@ import {
   register
 } from 'riot'
 
-// import Button from './material-elements/material-button/material-button.riot';
+import Button from './material-elements/material-button/material-button.riot';
 // import Card from './material-elements/material-card/material-card.riot';
 // import Checkbox from './material-elements/material-checkbox/material-checkbox.riot';
 // import Combo from './material-elements/material-combo/material-combo.riot';
@@ -16,7 +16,7 @@ import Navbar from './material-elements/material-navbar/material-navbar.riot';
 // import Spinner from './material-elements/material-spinner/material-spinner.riot';
 // import Tabs from './material-elements/material-tabs/material-tabs.riot';
 // import TextArea from './material-elements/material-textarea/material-textarea.riot';
-// import Waves from './material-elements/material-waves/material-waves.riot';
+import Waves from './material-elements/material-waves/material-waves.riot';
 // import Footer from './material-elements/material-footer/material-footer.riot';
 
 import './material-elements/material-button/material-button.scss';
@@ -36,4 +36,6 @@ import './material-elements/material-textarea/material-textarea.scss';
 import './material-elements/material-waves/material-waves.scss';
 import './material-elements/material-footer/material-footer.scss';
 
+register('material-button', Button);
 register('material-navbar', Navbar);
+register('material-waves', Waves);

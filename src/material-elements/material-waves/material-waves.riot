@@ -1,0 +1,42 @@
+<material-waves>
+  <div id="waves" ref="waves"></div>
+  <script>
+    import Wave from './wave';
+    export default {
+      onMounted() {
+        // Basics
+        this._waves = [];
+        this._events = [];
+        if (typeof this.props.setLaunchListener === 'function') {
+          this.props.setLaunchListener(this.launch);
+        }
+      },
+      // Launch the ripple
+      launch(e) {
+        var wave = new Wave(this.$('#waves'), {}, e);
+        this._waves.push(wave);
+        if (this.props.onWaveStart) {
+          this.props.onWaveStart(wave)
+        }
+        if (!this._events.length) {
+          this._events.push(e.target.addEventListener('mouseup', () => this.hold()));
+          this._events.push(e.target.addEventListener('mouseleave', () => this.hold()));
+        }
+      },
+      // Hold the ripple. It will be removed later.
+      hold() {
+        //   // The last of waves
+        if (this._waves[this._waves.length - 1]) this._waves[this._waves.length - 1].waveOut(this.waveOut);
+        if (this._waves[this._waves.length - 1]) this._waves.slice(this._waves.length - 1, 1);
+      },
+      /**
+       * When a wave has been done its work.
+       */
+      waveOut() {
+        if (this.props.onWaveEnd) {
+          this.props.onWaveEnd()
+        }
+      }
+    }
+  </script>
+</material-waves>
