@@ -1,0 +1,55 @@
+<material-dropdown>
+  <div class="dropdown {state.opening ? 'opening' : false } {props.animation || 'top'}" if="{state.opened}">
+    <slot />
+  </div>
+  <script>
+    export default {
+      state: {
+        opening: false,
+        opened: false
+      },
+      onMounted() {
+        // Basics
+        this.state.opened = this.props.opened || false;
+        if (typeof this.props.openFn === 'function') this.props.openFn(this.open)
+        if (typeof this.props.closeFn === 'function') this.props.closeFn(this.close)
+        if (typeof this.props.toggleFn === 'function') this.props.toggleFn(this.toggle)
+        if (typeof this.props.isOpenFn === 'function') this.props.isOpenFn(this.isOpen)
+      },
+      isOpen() {
+        return this.state.opened;
+      },
+      toggle() {
+        if (this.state.opened) {
+          this.close();
+        } else {
+          this.open();
+        }
+      },
+      open() {
+        if (this.state.opening) return;
+        this.update({
+          opened: true,
+          opening: true
+        });
+        setTimeout(() => {
+          this.update({
+            opening: false
+          });
+        }, 0);
+      },
+      close() {
+        if (this.state.opening) return;
+        this.update({
+          opening: true
+        });
+        setTimeout(() => {
+          this.update({
+            opened: false,
+            opening: false
+          });
+        }, 200)
+      }
+    }
+  </script>
+</material-dropdown>

@@ -14,10 +14,10 @@
       <div class="item">
         <div class="item">
           <div class="button-container">
-            <material-button ref="buttonOne">
+            <material-button onclick="{() => toggleDropdownOne()}">
               <div class="text">Toggle Dropdown</div>
             </material-button><br>
-            <material-dropdown ref="dropdown" ref="dropDownOne">
+            <material-dropdown toggleFn="{(toggle) => this.toggleDropdownOne = toggle}">
               <p>DropDown content</p>
             </material-dropdown>
           </div>
@@ -110,10 +110,6 @@
     </div>
   </div>
   <script>
-    function openDropdown() {
-      var dropdown = findTag(mounted, 'dropdown');
-      !dropdown.opened ? dropdown.open() : dropdown.close();
-    }
 
     function openDropdownTwo() {
       var dropdown = findTag(mounted, 'dropdown2');
