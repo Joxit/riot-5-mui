@@ -8,20 +8,20 @@
     export default {
       onMounted() {
         // Attributes
-        this.disabled = this.props.disabled || false;
+        this.disabled = this.props.disabled === '' || this.props.disabled || false;
         // Launch waves
         this.launch = (e) => {
           if (!this.disabled && this.triggerLaunch) this.triggerLaunch(e);
         }
         // Trigger the click
-        this.root.onclick = this.onClick
+        const onClick = this.props.onClick || this.props.onclick;
+        this.root.onclick = (e) => {
+          if (this.props.link) window.location.href = this.props.link;
+          if (typeof onClick === 'function') onClick(e)
+        }
       },
       setLaunchListener(cb) {
         this.triggerLaunch = cb;
-      },
-      onClick(e) {
-        if (this.props.link) window.location.href = this.props.link;
-        if (typeof this.props.onClick === 'function') this.props.onClick(e)
       },
       /**
        * When wave will be starting invoke appropriate event
