@@ -10,7 +10,7 @@ import Dropdown from './material-elements/material-dropdown/material-dropdown.ri
 // import DropdownList from './material-elements/material-dropdown-list/material-dropdown-list.riot';
 import Input from './material-elements/material-input/material-input.riot';
 import Navbar from './material-elements/material-navbar/material-navbar.riot';
-// import Pane from './material-elements/material-pane/material-pane.riot';
+import Pane from './material-elements/material-pane/material-pane.riot';
 // import Popup from './material-elements/material-popup/material-popup.riot';
 // import Snackbar from './material-elements/material-snackbar/material-snackbar.riot';
 // import Spinner from './material-elements/material-spinner/material-spinner.riot';
@@ -40,4 +40,5 @@ register('material-button', Button);
 register('material-dropdown', Dropdown);
 register('material-input', Input);
 register('material-navbar', Navbar);
+register('material-pane', Pane);
 register('material-waves', Waves);

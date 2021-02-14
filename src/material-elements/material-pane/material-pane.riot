@@ -1,0 +1,21 @@
+<material-pane>
+  <material-navbar style="{this.style}">
+    <slot name="material-pane-left-bar"></slot>
+    <slot name="material-pane-title"></slot>
+    <slot name="material-pane-right-bar"></slot>
+  </material-navbar>
+  <div class="content">
+    <slot name="material-pane-content"></slot>
+    <slot></slot>
+  </div>
+  <script>
+    export default {
+      onMounted() {
+        const style = this.$('material-navbar').style;
+        style.height = this.props.materialNavbarHeight || '60px';
+        style['line-height'] = this.props.materialNavbarHeight || '60px';
+        style['background-color'] = this.props.materialNavbarColor || '#ccc';
+      }
+    }
+  </script>
+</material-pane>
