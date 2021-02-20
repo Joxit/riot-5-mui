@@ -27,7 +27,7 @@ material-card {
   .title {
     padding: 20px 10px;
     font-size: 22px;
-    color: #25313b;
+    color: $material-card-color;
     @include vendor-prefix(box-shadow,'0 2px 3px 0 rgba(0, 0, 0, 0.08), 0 2px 7px 0 rgba(0, 0, 0, 0.02)');
   }
   .material-card-content {

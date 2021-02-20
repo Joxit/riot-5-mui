@@ -3,7 +3,7 @@ import {
 } from 'riot'
 
 import Button from './material-elements/material-button/material-button.riot';
-// import Card from './material-elements/material-card/material-card.riot';
+import Card from './material-elements/material-card/material-card.riot';
 // import Checkbox from './material-elements/material-checkbox/material-checkbox.riot';
 // import Combo from './material-elements/material-combo/material-combo.riot';
 import Dropdown from './material-elements/material-dropdown/material-dropdown.riot';
@@ -37,6 +37,7 @@ import './material-elements/material-waves/material-waves.scss';
 import './material-elements/material-footer/material-footer.scss';
 
 register('material-button', Button);
+register('material-card', Card);
 register('material-dropdown', Dropdown);
 register('material-dropdown-list', DropdownList);
 register('material-input', Input);
