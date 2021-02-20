@@ -29,19 +29,19 @@
         </div>
       </div>
       <div class="item" style="margin-top: 22px">
-        <material-button>
+        <material-button onClick="{this.togglePopupOne}">
           <div class="text">Open</div>
         </material-button>
-        <material-popup ref="popupOne">
-          <h1 class="material-popup-title">TITLE</h1>
-          <p class="material-popup-content">Accerso alius sententia ut mihi, phasmatis of interregnum ego dico, solvo
+        <material-popup opened={this.popupOne} onClick="{this.togglePopupOne}">
+          <h1 slot="title">TITLE</h1>
+          <p slot="content">Accerso alius sententia ut mihi, phasmatis of interregnum ego dico, solvo
             meus mens mei,
             ego dico phasmatis audite meus placitum meus mens quod iacio (Nombre de la persona)</p>
-          <div class="material-popup-action">
-            <material-button>
+          <div slot="action">
+            <material-button onClick="{this.togglePopupOne}">
               Ok
             </material-button>
-            <material-button>
+            <material-button onClick="{this.togglePopupOne}">
               Cancel
             </material-button>
           </div>
@@ -113,6 +113,11 @@
     export default {
       onBeforeMount() {
         this.dropdownList = [{title:'One'},{title:'Two'}]
+        this.popupOne = false;
+      },
+      togglePopupOne() {
+        this.popupOne = !this.popupOne;
+        this.update();
       }
     }
     function openDropdownTwo() {
