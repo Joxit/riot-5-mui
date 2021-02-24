@@ -1,0 +1,44 @@
+<material-tabs>
+  <material-button each="{(tab, k) in props.tabs}" onClick="{(e) => this.onTabChanged(e, k)}" class="{state.selected == k ? 'selected' : ''}" waves-opacity="{props.wavesOpacity}" waves-duration="{props.wavesDuration}" waves-center="{props.wavesCenter}" waves-color="{props.wavesColor}">
+    <div class="text" title="{tab.title}">{props.cut ? this.cut(tab.title) : tab.title}</div>
+  </material-button>
+  <div class="line-wrapper" if="{props.useLine}">
+    <div class="line" ref="line"></div>
+  </div>
+  <slot></slot>
+  <script>
+    export default {
+      state: {
+        selected: 0
+      },
+      onMounted(props, state) {
+        const line = this.$('.line');
+        this.$$('material-button').forEach((node) => {
+          node.style.width = (100 / this.props.tabs.length).toFixed(2) + '%';
+          if (line) {
+            line.style.width = node.style.width;
+          }
+        });
+        this.setLinePosition();
+      },
+      onTabChanged(e, selected) {
+        this.update({
+          selected: selected
+        });
+        this.setLinePosition();
+        if (typeof this.props.onTabChanged === "function") {
+          this.props.onTabChanged(this.props.tabs[selected], selected);
+        }
+      },
+      setLinePosition() {
+        const line = this.$('.line');
+        if (line) {
+          line.style.left = (100 / this.props.tabs.length).toFixed(2) * (this.state.selected) + '%';
+        }
+      },
+      cut(title) {
+        return title.length > props.cut ? title.substr(0, props.cut) + '...' : title;
+      }
+    }
+  </script>
+</material-tabs>

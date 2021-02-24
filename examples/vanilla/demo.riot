@@ -48,7 +48,21 @@
         </material-popup>
       </div>
       <div class="item" style="margin-top: 8px">
-        <material-tabs useLine="true" tabs="[\{title:'ONE'\},\{title:'TWO'\}]"></material-tabs>
+        <material-tabs use-line="true" tabs="{this.tabList}" onTabChanged="{this.onTabChanged}"></material-tabs>
+      </div>
+      <div class="item" style="margin-top: 8px">
+        <material-tabs useLine="false" tabs="{this.tabList}" onTabChanged="{this.onTabChanged}"></material-tabs>
+      </div>
+      <div class="item" style="margin-top: 8px">
+        <material-card>
+          <b slot="title">Title</b>
+          Card content with title.
+        </material-card>
+      </div>
+      <div class="item" style="margin-top: 8px">
+        <material-card>
+          Card content without title.
+        </material-card>
       </div>
       <!--<div class="item" style="margin-top: 8px">
             <material-loader></material-loader>
@@ -112,14 +126,27 @@
   <script>
     export default {
       onBeforeMount() {
-        this.dropdownList = [{title:'One'},{title:'Two'}]
+        this.dropdownList = [{
+          title: 'One'
+        }, {
+          title: 'Two'
+        }];
+        this.tabList = [{
+          title: 'ONE'
+        }, {
+          title: 'TWO'
+        }]
         this.popupOne = false;
       },
       togglePopupOne() {
         this.popupOne = !this.popupOne;
         this.update();
+      },
+      onTabChanged(tabs, selected) {
+        console.log(`onTabChanged ${JSON.stringify(tabs)}, ${selected}`)
       }
     }
+
     function openDropdownTwo() {
       var dropdown = findTag(mounted, 'dropdown2');
       !dropdown.opened ? dropdown.open() : dropdown.close();
