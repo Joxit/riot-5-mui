@@ -4,7 +4,7 @@ import {
 
 import Button from './material-elements/material-button/material-button.riot';
 import Card from './material-elements/material-card/material-card.riot';
-// import Checkbox from './material-elements/material-checkbox/material-checkbox.riot';
+import Checkbox from './material-elements/material-checkbox/material-checkbox.riot';
 // import Combo from './material-elements/material-combo/material-combo.riot';
 import Dropdown from './material-elements/material-dropdown/material-dropdown.riot';
 import DropdownList from './material-elements/material-dropdown-list/material-dropdown-list.riot';
@@ -38,6 +38,7 @@ import './material-elements/material-footer/material-footer.scss';
 
 register('material-button', Button);
 register('material-card', Card);
+register('material-checkbox', Checkbox);
 register('material-dropdown', Dropdown);
 register('material-dropdown-list', DropdownList);
 register('material-input', Input);

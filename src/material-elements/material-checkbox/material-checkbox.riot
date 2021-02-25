@@ -1,0 +1,25 @@
+<material-checkbox>
+  <div class="checkbox {state.checked ? 'checked': ''}" onclick="{onChange}">
+    <div class="checkmark"></div>
+  </div>
+  <div class="label" onclick="{onChange}">
+    <slot></slot>
+  </div>
+  <input type="hidden" value="{state.checked}">
+  <script>
+    export default {
+      state: {
+        checked: false
+      },
+      onMounted(props) {
+        this.state.checked = this.props.checked
+      },
+      onChange(e) {
+        if (typeof this.props.onChange === 'function') {
+          this.props.onChange(!this.state.checked)
+        }
+        this.update({ checked: !this.state.checked });
+      }
+    }
+  </script>
+</material-checkbox>
