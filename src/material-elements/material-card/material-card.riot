@@ -2,9 +2,7 @@
   <div class="title" if="{state.titleExist}">
     <slot name="title"></slot>
   </div>
-  <div class="material-card-content">
-    <slot />
-  </div>
+  <slot />
   <script>
     export default {
       state: {

@@ -8,11 +8,8 @@
   <input type="hidden" value="{state.checked}">
   <script>
     export default {
-      state: {
-        checked: false
-      },
-      onMounted(props) {
-        this.state.checked = this.props.checked
+      onBeforeMount(props,state) {
+        this.state.checked = this.props.checked || false
       },
       onChange(e) {
         if (typeof this.props.onChange === 'function') {
