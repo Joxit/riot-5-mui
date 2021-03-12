@@ -1,21 +1,26 @@
 <material-checkbox>
-  <div class="checkbox {state.checked ? 'checked': ''}" onclick="{onChange}">
+  <div class="checkbox { state.checked ? 'checked' : '' }" onclick="{ onChange }">
     <div class="checkmark"></div>
   </div>
-  <div class="label" onclick="{onChange}">
+  <div class="label" onclick="{ onChange }">
     <slot></slot>
   </div>
-  <input type="hidden" value="{state.checked}">
+  <input type="hidden" value="{ state.checked }">
   <script>
     export default {
-      onBeforeMount(props,state) {
-        this.state.checked = this.props.checked || false
+      onBeforeMount(props, state) {
+        state.checked = props.checked !== undefined ? props.checked : state.checked;
       },
-      onChange(e) {
+      onBeforeUpdate(props, state) {
+        state.checked = props.checked !== undefined ? props.checked : state.checked;
+      },
+      onChange(event) {
         if (typeof this.props.onChange === 'function') {
-          this.props.onChange(!this.state.checked)
+          this.props.onChange(!this.state.checked, event)
         }
-        this.update({ checked: !this.state.checked });
+        this.update({
+          checked: !this.state.checked
+        });
       }
     }
   </script>
