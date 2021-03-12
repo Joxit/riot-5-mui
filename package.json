@@ -2,14 +2,14 @@
   "name": "riot-mui",
   "version": "0.1.1",
   "description": "Set of material ui components for riot js.",
-  "main": "build/js/riot-mui-min.js",
+  "main": "src/index.js",
   "author": "Anton Miroshnichenko",
   "scripts": {
     "format": "npm run format-html && npm run format-js && npm run format-riot",
     "format-html": "find src examples -name '*.html' -exec js-beautify --config .jsbeautifyrc -f {} --type html -r \\;",
     "format-js": "find src examples -name '*.js' -exec js-beautify --config .jsbeautifyrc -f {} --type js -r \\;",
     "format-riot": "find src examples -name '*.riot' -exec js-beautify --config .jsbeautifyrc -f {} --type html -r \\;",
-    "start": "webpack-dev-server",
+    "start": "ROLLUP_SERVE=true rollup -c rollup.config.js -w",
     "build": "rollup -c rollup.config.js"
   },
   "contributors": [
