@@ -31,6 +31,7 @@ register('material-input', mui.MaterialInput);
 register('material-navbar', mui.MaterialNavbar);
 register('material-pane', mui.MaterialPane);
 register('material-popup', mui.MaterialPopup);
+register('material-snackbar', mui.MaterialSnackbar);
 register('material-spinner', mui.MaterialSpinner);
 register('material-tabs', mui.MaterialTabs);
 register('material-waves', mui.MaterialWaves);

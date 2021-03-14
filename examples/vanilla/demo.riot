@@ -121,10 +121,8 @@
         </material-footer>
       </div>
       <div class="item">
-        <material-button>
-          <div class="text">Launch</div>
-        </material-button>
-        <material-snackbar ref="snackbar"></material-snackbar>
+        <material-button onClick="{ launchToast }">Launch</material-button>
+        <material-snackbar message="{ state.toastMessage }"></material-snackbar>
       </div>
       <div class="item">
         <material-textarea label="Textarea"></material-textarea>
@@ -137,6 +135,7 @@
   <script>
     export default {
       onBeforeMount() {
+        this.nToasts = 0;
         this.dropdownList = [{
           title: 'One'
         }, {
@@ -155,6 +154,12 @@
       },
       onTabChanged(tabs, selected) {
         console.log(`onTabChanged ${JSON.stringify(tabs)}, ${selected}`)
+      },
+      launchToast() {
+        this.nToasts++;
+        this.update({
+          toastMessage: `Toast was fired. To close it just click on it! ${this.nToasts}`
+        })
       }
     }
 
@@ -166,13 +171,6 @@
     function openPopup() {
       var popup = findTag(mounted, 'popupOne');
       !popup.opened ? popup.open() : popup.close();
-    }
-
-    function launchToast() {
-      var snackbar = findTag(mounted, 'snackbar');
-      snackbar.addToast({
-        message: 'Toast was fired. To close it just click on it!'
-      })
     }
 
     function findTag(pack, name) {

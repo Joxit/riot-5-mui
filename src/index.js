@@ -9,7 +9,7 @@ import MaterialInput from './material-elements/material-input/material-input.rio
 import MaterialNavbar from './material-elements/material-navbar/material-navbar.riot';
 import MaterialPane from './material-elements/material-pane/material-pane.riot';
 import MaterialPopup from './material-elements/material-popup/material-popup.riot';
-// import MaterialSnackbar from './material-elements/material-snackbar/material-snackbar.riot';
+import MaterialSnackbar from './material-elements/material-snackbar/material-snackbar.riot';
 import MaterialSpinner from './material-elements/material-spinner/material-spinner.riot';
 import MaterialTabs from './material-elements/material-tabs/material-tabs.riot';
 // import MaterialTextArea from './material-elements/material-textarea/material-textarea.riot';
@@ -26,7 +26,7 @@ export { MaterialInput };
 export { MaterialNavbar };
 export { MaterialPane };
 export { MaterialPopup };
-// export { MaterialSnackbar };
+export { MaterialSnackbar };
 export { MaterialSpinner };
 export { MaterialTabs };
 // export { MaterialTextArea };
