@@ -1,5 +1,5 @@
 <material-waves>
-  <div id="waves" ref="waves"></div>
+  <div id="waves" onmousedown="{ launch }"></div>
   <script>
     import Wave from './wave';
     export default {
@@ -7,13 +7,10 @@
         // Basics
         this._waves = [];
         this._events = [];
-        if (typeof this.props.setLaunchListener === 'function') {
-          this.props.setLaunchListener(this.launch);
-        }
       },
       // Launch the ripple
       launch(e) {
-        var wave = new Wave(this.$('#waves'), {}, e);
+        var wave = new Wave(this.$('#waves'), this.props, e);
         this._waves.push(wave);
         if (this.props.onWaveStart) {
           this.props.onWaveStart(wave)
