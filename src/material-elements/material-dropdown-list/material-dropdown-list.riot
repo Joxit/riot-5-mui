@@ -1,8 +1,8 @@
 <material-dropdown-list>
-  <ul class="dropdown-content {this.opening ? 'opening' : ''}" if="{props.opened}">
-    <li each="{(item, key) in props.items}" class="{props.selected == key ? 'selected' : ''}">
-      <span if="{!item.link}" onclick="{select.bind(null, {item, key})}">{item.title}</span>
-      <a if="{item.link}" href="{item.link}" onclick="{select(item)}" title="{item.title}">{item.title}</a>
+  <ul class="dropdown-content { state.opening ? 'opening' : '' }" if="{ state.opening || state.opened }">
+    <li each="{ (item, key) in props.items }" class="{ props.selected == key ? 'selected' : '' }">
+      <span if="{ !item.link }" onclick="{ select.bind(null, {item, key}) }">{item.title}</span>
+      <a if="{ item.link }" href="{ item.link }" onclick="{ select(item) }" title="{ item.title }">{ item.title }</a>
     </li>
   </ul>
   <script>
@@ -19,56 +19,37 @@
           })
         }
       },
+      onBeforeUpdate(props, state) {
+        if (props.opened !== state.opened) {
+          state.opening = true;
+        }
+      },
       onUpdated(props, state) {
-        if (props.opened && !state.opened) {
-          state.opened = true;
-          this.open();
-        } else if (!props.opened && state.opened) {
-          state.opened = false;
-          this.close();
+        if (state.opening) {
+          setTimeout(() => {
+            this.update({
+              opening: false,
+              opened: props.opened
+            });
+          }, props.opened ? 0 : 200);
         }
       },
       /**
        * Select dropdown item
        * @param e
        */
-      select({item, key}) {
+      select({
+        item,
+        key
+      }) {
         this.update({
           selected: key
         });
         // Trigger event. It will help you to grab selected value from outside
         // of this component
         if (typeof this.props.onSelect === 'function') this.props.onSelect(key, item);
-        
+
         return true;
-      },
-      /**
-       * Open dropdown list
-       */
-      open() {
-        this.update({
-          opened: true,
-          opening: true
-        });
-        setTimeout(() => {
-          this.update({
-            opening: false
-          });
-        }, 0);
-      },
-      /**
-       * Close dropdown list
-       */
-      close() {
-        this.update({
-          opening: true
-        });
-        setTimeout(() => {
-          this.update({
-            opened: false,
-            opening: false,
-          });
-        }, 200)
       }
     }
   </script>
