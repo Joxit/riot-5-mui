@@ -27,7 +27,8 @@ if (useServe) {
       console.log(`Move examples/vanilla/* to ${output}/*`)
       const html = fs
         .readFileSync('examples/vanilla/index.html', 'utf-8')
-        .replace('../../build/js/riot-mui.js', './js/riot-mui.js');
+        .replace('../../build/js/riot-mui.js', './js/riot-mui.js')
+        .replace('../../build/styles/riot-mui.min.css', './styles/riot-mui.min.css');
       fs.writeFileSync(`${output}/index.html`, html);
       fs.writeFileSync(`${output}/demo.riot`, fs.readFileSync('examples/vanilla/demo.riot', 'utf-8'));
     },
