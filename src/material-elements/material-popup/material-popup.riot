@@ -1,10 +1,12 @@
 <material-popup>
-  <div class="overlay" onclick="{ onClick }" if="{ props.opened || state.opened }"></div>
-  <div class="popup { state.transition ? 'opening' : '' } { props.animation || 'top' }" if="{ props.opened || state.opened }">
-    <div class="content">
-      <slot name="title"></slot>
-      <slot name="content"></slot>
-      <slot name="action"></slot>
+  <div class="container" if="{ props.opened || state.opened }">
+    <div class="overlay" onclick="{ onClick }"></div>
+    <div class="popup { state.transition ? 'opening' : '' } { props.animation || 'top' }">
+      <div class="content">
+        <slot name="title"></slot>
+        <slot name="content"></slot>
+        <slot name="action"></slot>
+      </div>
     </div>
   </div>
   <script>
