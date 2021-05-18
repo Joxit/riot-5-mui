@@ -11,7 +11,7 @@ export default class Validate {
     if (!opts) console.debug('Sorry, but for using validate mixin you should add an opts argument');
     this.type = opts.type;
     if (opts.valid) {
-      this.validationType = typeof this[opts.valid] == 'function' ? 'Function' : 'Regexp';
+      this.validationType = typeof opts.valid == 'function' ? 'Function' : 'Regexp';
       if (this.validationType === 'Regexp') {
         try {
           this.validationRegexp = new RegExp(opts.valid);
@@ -20,7 +20,7 @@ export default class Validate {
         }
       }
       if (this.validationType === 'Function') {
-        this.validationFunction = this[opts.valid] || false;
+        this.validationFunction = opts.valid || false;
       }
     } else if (opts && Object.keys(this.base).indexOf(this.type) != -1) {
       this.validationType = 'Type';
