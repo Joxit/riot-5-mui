@@ -6,7 +6,11 @@
   </div>
 
   <script>
+    import MaterialWaves from '../material-waves/material-waves.riot';
     export default {
+      components: {
+        MaterialWaves
+      },
       onMounted() {
         // Attributes
         this.disabled = this.props.disabled === '' || this.props.disabled || false;

@@ -1,0 +1,57 @@
+<riot-mui-documentation>
+  <router base="#!">
+    <route path="{route('')}">
+      <home-page />
+    </route>
+    <route path="{route('button')}">
+      <button-page />
+    </route>
+
+  </router>
+  <script>
+    import HomePage from './pages/home.riot'
+    import ButtonPage from './pages/button.riot'
+    import {
+      Router,
+      Route,
+    } from '@riotjs/route'
+
+    export default {
+      components: {
+        HomePage,
+        ButtonPage,
+        Route,
+        Router
+      },
+      route(path) {
+        return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`
+      }
+    }
+  </script>
+  <style>
+    :host {
+      color: rgba(0, 0, 0, 0.87);
+      margin: 0;
+      font-size: 0.875rem;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-weight: 400;
+      line-height: 1.43;
+      letter-spacing: 0.01071em;
+      background-color: #fff;
+    }
+    :host .example-rendered {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    :host .example-rendered .example-row>* {
+      margin: 0.5em 1em;
+    }
+    :host .example-rendered .example-row>*:first-child {
+      margin-left: 0;
+    }
+    :host .example-rendered .example-row>*:last-child {
+      margin-right: 0;
+    }
+  </style>
+</riot-mui-documentation>

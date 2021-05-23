@@ -1,0 +1,115 @@
+<button>
+  <h1>Material Button</h1>
+  <p>The API documentation of the Riot MUI Button component.</p>
+  <h2>Import</h2>
+  <pre><code class="language-js">import \{ Button } from 'riot-mui';</code></pre>
+
+  <h2 id="contained-buttons">Contained Buttons</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button>Default</material-button>
+        <material-button color="primary">Primary</material-button>
+        <material-button color="secondary">Secondary</material-button>
+        <material-button color="#61bdcc">Custom Color</material-button>
+        <material-button disabled>Disabled</material-button>
+        <material-button href="https://joxit.dev">Link</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{example1}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="outlined-buttons">Outlined Buttons</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button type="outlined">Default</material-button>
+        <material-button type="outlined" color="primary">Primary</material-button>
+        <material-button type="outlined" color="secondary">Secondary</material-button>
+        <material-button type="outlined" color="#61bdcc">Custom Color</material-button>
+        <material-button type="outlined" disabled>Disabled</material-button>
+        <material-button type="outlined" href="https://joxit.dev">Link</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{example2}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="text-buttons">Text Buttons</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button type="text">Default</material-button>
+        <material-button type="text" color="primary">Primary</material-button>
+        <material-button type="text" color="secondary">Secondary</material-button>
+        <material-button type="text" color="#61bdcc">Custom Color</material-button>
+        <material-button type="text" disabled>Disabled</material-button>
+        <material-button type="text" href="https://joxit.dev">Link</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{example3}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="handle-click">Handle Click</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button onClick="{ () => alert('clicked')}">Default</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{example4}</code></pre>
+    </div>
+  </div>
+
+
+  <script>
+    import {
+      MaterialButton,
+      MaterialWaves
+    } from 'riot-mui';
+    import CodeExample from '../components/code-example.riot';
+    export default {
+      components: {
+        CodeExample,
+        MaterialButton,
+        MaterialWaves
+      },
+      example1: `
+<material-button>Default</material-button>
+<material-button color="primary">Primary</material-button>
+<material-button color="secondary">Secondary</material-button>
+<material-button color="#61bdcc">Custom Color</material-button>
+<material-button disabled>Disabled</material-button>
+<material-button href="https://joxit.dev">Link</material-button>
+`.trim(),
+      example2: `
+<material-button type="outlined">Default</material-button>
+<material-button type="outlined" color="primary">Primary</material-button>
+<material-button type="outlined" color="secondary">Secondary</material-button>
+<material-button type="outlined" color="#61bdcc">Custom Color</material-button>
+<material-button type="outlined" disabled>Disabled</material-button>
+<material-button type="outlined" href="https://joxit.dev">Link</material-button>
+`.trim(),
+      example3: `
+<material-button type="text">Default</material-button>
+<material-button type="text" color="primary">Primary</material-button>
+<material-button type="text" color="secondary">Secondary</material-button>
+<material-button type="text" color="#61bdcc">Custom Color</material-button>
+<material-button type="text" disabled>Disabled</material-button>
+<material-button type="text" href="https://joxit.dev">Link</material-button>
+`.trim(),
+      example4: `
+<material-button onClick="{ () => alert('clicked')}">Default</material-button>
+`.trim(),
+alert(text) {
+  window.alert(text)
+} 
+    }
+  </script>
+</button>
