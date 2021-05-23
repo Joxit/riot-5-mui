@@ -9,15 +9,13 @@
     <div class="example-rendered">
       <div class="example-row">
         <material-button>Default</material-button>
-        <material-button color="primary">Primary</material-button>
-        <material-button color="secondary">Secondary</material-button>
-        <material-button color="#61bdcc">Custom Color</material-button>
+        <material-button color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button disabled>Disabled</material-button>
-        <material-button href="https://joxit.dev">Link</material-button>
+        <material-button href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
-      <pre><code class="language-html">{example1}</code></pre>
+      <pre><code class="language-html">{containedButtons}</code></pre>
     </div>
   </div>
 
@@ -25,33 +23,74 @@
   <div class="example-container">
     <div class="example-rendered">
       <div class="example-row">
-        <material-button type="outlined">Default</material-button>
-        <material-button type="outlined" color="primary">Primary</material-button>
-        <material-button type="outlined" color="secondary">Secondary</material-button>
-        <material-button type="outlined" color="#61bdcc">Custom Color</material-button>
-        <material-button type="outlined" disabled>Disabled</material-button>
-        <material-button type="outlined" href="https://joxit.dev">Link</material-button>
+        <material-button outlined>Default</material-button>
+        <material-button outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+        <material-button outlined disabled>Disabled</material-button>
+        <material-button outlined href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
-      <pre><code class="language-html">{example2}</code></pre>
+      <pre><code class="language-html">{outlinedButtons}</code></pre>
     </div>
   </div>
 
-  <h2 id="text-buttons">Text Buttons</h2>
+  <h2 id="inverted-buttons">Inverted Buttons</h2>
   <div class="example-container">
     <div class="example-rendered">
       <div class="example-row">
-        <material-button type="text">Default</material-button>
-        <material-button type="text" color="primary">Primary</material-button>
-        <material-button type="text" color="secondary">Secondary</material-button>
-        <material-button type="text" color="#61bdcc">Custom Color</material-button>
-        <material-button type="text" disabled>Disabled</material-button>
-        <material-button type="text" href="https://joxit.dev">Link</material-button>
+        <material-button inverted>Default</material-button>
+        <material-button inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+        <material-button inverted disabled>Disabled</material-button>
+        <material-button inverted href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
-      <pre><code class="language-html">{example3}</code></pre>
+      <pre><code class="language-html">{invertedButtons}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="shadow-buttons">Shadow Buttons</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button shadow>Default</material-button>
+        <material-button shadow color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+        <material-button shadow disabled>Disabled</material-button>
+        <material-button shadow href="https://joxit.dev">Link</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{shadowButtons}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="rounded-buttons">Rounded Buttons</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button rounded>Default</material-button>
+        <material-button rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+        <material-button rounded disabled>Default</material-button>
+        <material-button rounded href="https://joxit.dev" target="_blank">Default</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{roundedExample}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="rounded-icon-buttons">Rounded Buttons with icon</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button icon><i class="icon">+</i></material-button>
+        <material-button icon color="#ffdc7d" text-color="#f14668"><i class="icon">+</i></material-button>
+        <material-button icon disabled><i class="icon">+</i></material-button>
+        <material-button icon href="https://joxit.dev" target="_blank"><i class="icon">+</i></material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{iconExample}</code></pre>
     </div>
   </div>
 
@@ -63,7 +102,7 @@
       </div>
     </div>
     <div class="example-code">
-      <pre><code class="language-html">{example4}</code></pre>
+      <pre><code class="language-html">{handleClick}</code></pre>
     </div>
   </div>
 
@@ -73,43 +112,53 @@
       MaterialButton,
       MaterialWaves
     } from 'riot-mui';
-    import CodeExample from '../components/code-example.riot';
     export default {
       components: {
-        CodeExample,
         MaterialButton,
         MaterialWaves
       },
-      example1: `
+      containedButtons: `
 <material-button>Default</material-button>
-<material-button color="primary">Primary</material-button>
-<material-button color="secondary">Secondary</material-button>
-<material-button color="#61bdcc">Custom Color</material-button>
+<material-button color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
 <material-button disabled>Disabled</material-button>
-<material-button href="https://joxit.dev">Link</material-button>
+<material-button href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
-      example2: `
-<material-button type="outlined">Default</material-button>
-<material-button type="outlined" color="primary">Primary</material-button>
-<material-button type="outlined" color="secondary">Secondary</material-button>
-<material-button type="outlined" color="#61bdcc">Custom Color</material-button>
-<material-button type="outlined" disabled>Disabled</material-button>
-<material-button type="outlined" href="https://joxit.dev">Link</material-button>
+      outlinedButtons: `
+<material-button outlined>Default</material-button>
+<material-button outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+<material-button outlined disabled>Disabled</material-button>
+<material-button outlined href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
-      example3: `
-<material-button type="text">Default</material-button>
-<material-button type="text" color="primary">Primary</material-button>
-<material-button type="text" color="secondary">Secondary</material-button>
-<material-button type="text" color="#61bdcc">Custom Color</material-button>
-<material-button type="text" disabled>Disabled</material-button>
-<material-button type="text" href="https://joxit.dev">Link</material-button>
+      invertedButtons: `
+<material-button inverted>Default</material-button>
+<material-button inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+<material-button inverted disabled>Disabled</material-button>
+<material-button inverted href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
-      example4: `
+      shadowButtons: `
+<material-button shadow>Default</material-button>
+<material-button shadow color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+<material-button shadow disabled>Disabled</material-button>
+<material-button shadow href="https://joxit.dev" target="_blank">Link</material-button>
+`.trim(),
+      roundedExample: `
+<material-button rounded>Default</material-button>
+<material-button rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
+<material-button rounded disabled>Disabled</material-button>
+<material-button rounded href="https://joxit.dev" target="_blank">Link</material-button>
+`.trim(),
+      iconExample: `
+<material-button icon><i class="icon">+</i></material-button>
+<material-button icon color="#ffdc7d" text-color="#f14668"><i class="icon">+</i></material-button>
+<material-button icon disabled><i class="icon">+</i></material-button>
+<material-button icon href="https://joxit.dev" target="_blank"><i class="icon">+</i></material-button>
+`.trim(),
+      handleClick: `
 <material-button onClick="{ () => alert('clicked')}">Default</material-button>
 `.trim(),
-alert(text) {
-  window.alert(text)
-} 
+      alert(text) {
+        window.alert(text)
+      }
     }
   </script>
 </button>

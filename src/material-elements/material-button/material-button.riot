@@ -1,25 +1,58 @@
 <material-button>
-  <material-waves center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
+  <material-waves if="{!attributeToBool(this.props.disabled)}" center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
   </material-waves>
   <div class="content">
     <slot />
   </div>
 
   <script>
+    const SUPPORTED_ATTRIBUTES = ['disabled', 'rounded', 'icon', 'shadow', 'outlined', 'inverted'];
     import MaterialWaves from '../material-waves/material-waves.riot';
+    import {
+      attributeToBool
+    } from '../../mixins/utilities';
     export default {
+      state: {
+        attributes: {}
+      },
       components: {
         MaterialWaves
       },
-      onMounted() {
+      onMounted(props, state) {
         // Attributes
-        this.disabled = this.props.disabled === '' || this.props.disabled || false;
-
-        // Trigger the click
-        const onClick = this.props.onClick || this.props.onclick;
+        this.updateAttributes(props, state);
         this.root.onclick = (e) => {
-          if (this.props.link) window.location.href = this.props.link;
-          if (typeof onClick === 'function') onClick(e)
+          if (props.href) {
+            if (props.target) {
+              window.open(props.href, props.target);
+            } else {
+              window.location.href = props.href;
+            }
+          }
+          if (typeof props.onClick === 'function') props.onClick(e)
+        }
+      },
+      onUpdated(props, state) {
+        this.updateAttributes(props, state);
+      },
+      updateAttributes(props, state) {
+        SUPPORTED_ATTRIBUTES.forEach(attr => {
+          if (attributeToBool(props[attr])) {
+            this.root.setAttribute(attr, true);
+            state.attributes[attr] = true;
+          } else {
+            state.attributes[attr] = false;
+          }
+        })
+        if (state.attributes.outlined) {
+          this.root.style['border-color'] = props.color;
+          this.root.style.color = props.color;
+        } else if (state.attributes.inverted) {
+          this.root.style.color = props.color;
+          this.root.style.background = props.textColor;
+        } else {
+          this.root.style.background = props.color;
+          this.root.style.color = props.textColor;
         }
       },
       /**
@@ -33,7 +66,8 @@
        */
       onWaveEnd(wave) {
         if (typeof this.props.onWaveEnd === 'function') this.props.onWaveEnd(wave);
-      }
+      },
+      attributeToBool
     }
   </script>
 </material-button>
