@@ -56,7 +56,7 @@
         <material-button shadow>Default</material-button>
         <material-button shadow color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button shadow disabled>Disabled</material-button>
-        <material-button shadow href="https://joxit.dev">Link</material-button>
+        <material-button shadow href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
@@ -106,16 +106,21 @@
     </div>
   </div>
 
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
 
   <script>
     import {
       MaterialButton,
       MaterialWaves
     } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
     export default {
       components: {
         MaterialButton,
-        MaterialWaves
+        MaterialWaves,
+        PropsTable
       },
       containedButtons: `
 <material-button>Default</material-button>
@@ -158,7 +163,58 @@
 `.trim(),
       alert(text) {
         window.alert(text)
-      }
+      },
+      properties: [{
+        name: 'color',
+        type: 'string',
+        default: '',
+        description: 'Set a custom color for the background of the button.'
+      }, {
+        name: 'text-color',
+        type: 'string',
+        default: '',
+        description: 'Set a custom color for the text of the button.'
+      }, {
+        name: 'outlined',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the button for outlined.'
+      }, {
+        name: 'inverted',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the button for inverted.'
+      }, {
+        name: 'shadow',
+        type: 'boolean',
+        default: 'false',
+        description: 'Add shadow effect to the button.'
+      }, {
+        name: 'rounded',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the button for rounded.'
+      }, {
+        name: 'icon',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the button for icon. This is like a rounded style without padding and with height = width.'
+      }, {
+        name: 'onClick',
+        type: 'function',
+        default: '',
+        description: 'Set a callback function for onClick event. The first parameter is an Event.'
+      }, {
+        name: 'href',
+        type: 'string',
+        default: '',
+        description: 'Set a link when the button is triggered.'
+      }, {
+        name: 'target',
+        type: 'string',
+        default: '',
+        description: 'Set a target for the link when the button is triggered.'
+      }]
     }
   </script>
 </button>

@@ -1,0 +1,39 @@
+<props-table>
+  <table>
+    <thead>
+      <tr>
+        <th align="left">Name</th>
+        <th align="left">Type</th>
+        <th align="left">Default</th>
+        <th align="left">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr each="{property in props.properties}">
+        <td align="left"><span class="prop-name">{ property.name }</span></td>
+        <td align="left"><span class="prop-type">{ property.type }</span></td>
+        <td align="left">{ property.default }</td>
+        <td align="left">{ property.description }</td>
+      </tr>
+    </tbody>
+  </table>
+  <style>
+    :host table {
+      width: 100%;
+      display: block;
+      overflow: hidden;
+      overflow-x: auto;
+      word-break: normal;
+      margin-bottom: 16px;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+    :host th,
+    :host td {
+      padding: 0.5em 1em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      line-height: 1.5rem;
+      white-space: pre;
+    }
+  </style>
+</props-table>
