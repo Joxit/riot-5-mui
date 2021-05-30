@@ -10,7 +10,8 @@
     "format-js": "find src examples -name '*.js' -exec js-beautify --config .jsbeautifyrc -f {} --type js -r \\;",
     "format-riot": "find src examples -name '*.riot' -exec js-beautify --config .jsbeautifyrc -f {} --type html -r \\;",
     "start": "ROLLUP_SERVE=true rollup -c rollup.config.js -w",
-    "build": "rollup -c rollup.config.js"
+    "build": "ROLLUP_CLEANUP=true rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w"
   },
   "contributors": [
     "Tim Garthwaite <tim@mividstudios.com> (https://github.com/mividtim)"

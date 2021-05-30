@@ -6,4 +6,11 @@ const attributeToBool = (attribute) => {
   return false;
 }
 
-export { attributeToBool };
+const tryCall = function(fn) {
+  if (typeof fn === 'function') {
+    const deconstruction = new Array(...arguments).slice(1)
+    fn(...deconstruction)
+  }
+};
+
+export { attributeToBool, tryCall };

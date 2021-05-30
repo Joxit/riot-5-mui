@@ -11,7 +11,6 @@
         <material-button>Default</material-button>
         <material-button color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button disabled>Disabled</material-button>
-        <material-button href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
@@ -26,7 +25,6 @@
         <material-button outlined>Default</material-button>
         <material-button outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button outlined disabled>Disabled</material-button>
-        <material-button outlined href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
@@ -41,7 +39,6 @@
         <material-button inverted>Default</material-button>
         <material-button inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button inverted disabled>Disabled</material-button>
-        <material-button inverted href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
@@ -56,7 +53,6 @@
         <material-button shadow>Default</material-button>
         <material-button shadow color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button shadow disabled>Disabled</material-button>
-        <material-button shadow href="https://joxit.dev" target="_blank">Link</material-button>
       </div>
     </div>
     <div class="example-code">
@@ -71,7 +67,6 @@
         <material-button rounded>Default</material-button>
         <material-button rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
         <material-button rounded disabled>Default</material-button>
-        <material-button rounded href="https://joxit.dev" target="_blank">Default</material-button>
       </div>
     </div>
     <div class="example-code">
@@ -86,7 +81,6 @@
         <material-button icon><i class="icon">+</i></material-button>
         <material-button icon color="#ffdc7d" text-color="#f14668"><i class="icon">+</i></material-button>
         <material-button icon disabled><i class="icon">+</i></material-button>
-        <material-button icon href="https://joxit.dev" target="_blank"><i class="icon">+</i></material-button>
       </div>
     </div>
     <div class="example-code">
@@ -98,11 +92,27 @@
   <div class="example-container">
     <div class="example-rendered">
       <div class="example-row">
-        <material-button onClick="{ () => alert('clicked')}">Default</material-button>
+        <material-button onClick="{ (e) => alert('clicked')}">onClick</material-button>
+        <material-button href="https://joxit.dev" target="_blank">href</material-button>
+        <material-button href="https://joxit.dev" target="_blank" onClick="{ (e) => alert('clicked')}">onClick and href</material-button>
+        <material-button type="submit">submit</material-button>
       </div>
     </div>
     <div class="example-code">
       <pre><code class="language-html">{handleClick}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="waves-example">Waves example</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button>Default</material-button>
+        <material-button waves-center="true" waves-opacity="1" waves-color="#485fc7" waves-duration="1500" on-wave-start="{ (e) => console.log('waves-start', e) }" on-wave-end="{ (e) => console.log('waves-end', e) }">Custom waves</material-button>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{wavesExample}</code></pre>
     </div>
   </div>
 
@@ -126,40 +136,41 @@
 <material-button>Default</material-button>
 <material-button color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
 <material-button disabled>Disabled</material-button>
-<material-button href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
       outlinedButtons: `
 <material-button outlined>Default</material-button>
 <material-button outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
 <material-button outlined disabled>Disabled</material-button>
-<material-button outlined href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
       invertedButtons: `
 <material-button inverted>Default</material-button>
 <material-button inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
 <material-button inverted disabled>Disabled</material-button>
-<material-button inverted href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
       shadowButtons: `
 <material-button shadow>Default</material-button>
 <material-button shadow color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
 <material-button shadow disabled>Disabled</material-button>
-<material-button shadow href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
       roundedExample: `
 <material-button rounded>Default</material-button>
 <material-button rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
 <material-button rounded disabled>Disabled</material-button>
-<material-button rounded href="https://joxit.dev" target="_blank">Link</material-button>
 `.trim(),
       iconExample: `
 <material-button icon><i class="icon">+</i></material-button>
 <material-button icon color="#ffdc7d" text-color="#f14668"><i class="icon">+</i></material-button>
 <material-button icon disabled><i class="icon">+</i></material-button>
-<material-button icon href="https://joxit.dev" target="_blank"><i class="icon">+</i></material-button>
 `.trim(),
       handleClick: `
-<material-button onClick="{ () => alert('clicked')}">Default</material-button>
+<material-button onClick="{ (e) => alert('clicked')}">onClick</material-button>
+<material-button href="https://joxit.dev" target="_blank">href</material-button>
+<material-button href="https://joxit.dev" target="_blank" onClick="{ (e) => alert('clicked')}">onClick and href</material-button>
+<material-button type="submit">submit</material-button>
+`.trim(),
+      wavesExample: `
+<material-button>Default</material-button>
+<material-button waves-center="true" waves-opacity="1" waves-color="#485fc7" waves-duration="1500" on-wave-start="{ (e) => console.log('waves-start', e) }" on-wave-end="{ (e) => console.log('waves-end', e) }">Custom waves</material-button>
 `.trim(),
       alert(text) {
         window.alert(text)
@@ -214,6 +225,31 @@
         type: 'string',
         default: '',
         description: 'Set a target for the link when the button is triggered.'
+      }, {
+        name: 'waves-opacity',
+        type: 'number',
+        default: '0.6',
+        description: 'Opacity of wave effects.'
+      }, {
+        name: 'waves-color',
+        type: 'string',
+        default: '#fff',
+        description: 'Color of wave effects.'
+      }, {
+        name: 'waves-duration',
+        type: 'number',
+        default: '750',
+        description: 'Duration of wave effects in millisecond.'
+      }, {
+        name: 'on-wave-start',
+        type: 'function',
+        default: '',
+        description: 'Callback triggered on wave start. The first argument is the wave.'
+      }, {
+        name: 'on-wave-end',
+        type: 'function',
+        default: '',
+        description: 'Callback triggered on wave end.'
       }]
     }
   </script>

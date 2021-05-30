@@ -1,15 +1,25 @@
 <material-button>
-  <material-waves if="{!attributeToBool(this.props.disabled)}" center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
-  </material-waves>
-  <div class="content">
-    <slot />
-  </div>
+  <a if="{ props.href }" href="{ props.href }" target="{ props.target }">
+    <material-waves if="{!attributeToBool(this.props.disabled)}" center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
+    </material-waves>
+    <div class="content">
+      <slot />
+    </div>
+  </a>
+  <button type="{ props.type }" if="{ !props.href }">
+    <material-waves if="{!attributeToBool(this.props.disabled)}" center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
+    </material-waves>
+    <div class="content">
+      <slot />
+    </div>
+  </button>
 
   <script>
     const SUPPORTED_ATTRIBUTES = ['disabled', 'rounded', 'icon', 'shadow', 'outlined', 'inverted'];
     import MaterialWaves from '../material-waves/material-waves.riot';
     import {
-      attributeToBool
+      attributeToBool,
+      tryCall
     } from '../../mixins/utilities';
     export default {
       state: {
@@ -21,15 +31,8 @@
       onMounted(props, state) {
         // Attributes
         this.updateAttributes(props, state);
-        this.root.onclick = (e) => {
-          if (props.href) {
-            if (props.target) {
-              window.open(props.href, props.target);
-            } else {
-              window.location.href = props.href;
-            }
-          }
-          if (typeof props.onClick === 'function') props.onClick(e)
+        this.root.firstElementChild.onclick = (e) => {
+          tryCall(props.onClick, e)
         }
       },
       onUpdated(props, state) {
@@ -38,34 +41,34 @@
       updateAttributes(props, state) {
         SUPPORTED_ATTRIBUTES.forEach(attr => {
           if (attributeToBool(props[attr])) {
-            this.root.setAttribute(attr, true);
+            this.root.firstElementChild.setAttribute(attr, true);
             state.attributes[attr] = true;
           } else {
             state.attributes[attr] = false;
           }
         })
         if (state.attributes.outlined) {
-          this.root.style['border-color'] = props.color;
-          this.root.style.color = props.color;
+          this.root.firstElementChild.style['border-color'] = props.color;
+          this.root.firstElementChild.style.color = props.color;
         } else if (state.attributes.inverted) {
-          this.root.style.color = props.color;
-          this.root.style.background = props.textColor;
+          this.root.firstElementChild.style.color = props.color;
+          this.root.firstElementChild.style.background = props.textColor;
         } else {
-          this.root.style.background = props.color;
-          this.root.style.color = props.textColor;
+          this.root.firstElementChild.style.background = props.color;
+          this.root.firstElementChild.style.color = props.textColor;
         }
       },
       /**
        * When wave will be starting invoke appropriate event
        */
       onWaveStart(wave) {
-        if (typeof this.props.onWaveStart === 'function') this.props.onWaveStart(wave);
+        tryCall(this.props.onWaveStart, wave);
       },
       /**
        * When wave will end invoke appropriate event
        */
       onWaveEnd(wave) {
-        if (typeof this.props.onWaveEnd === 'function') this.props.onWaveEnd(wave);
+        tryCall(this.props.onWaveEnd, wave);
       },
       attributeToBool
     }

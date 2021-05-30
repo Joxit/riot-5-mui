@@ -9,6 +9,8 @@ import serve from 'rollup-plugin-serve';
 import fs from 'fs';
 
 const useServe = process.env.ROLLUP_SERVE === 'true';
+const cleanup = process.env.ROLLUP_CLEANUP === 'true';
+const port = process.env.ROLLUP_PORT || 8000;
 const output = useServe ? '.serve' : 'build';
 
 const plugins = [
@@ -20,11 +22,11 @@ const plugins = [
 ];
 
 if (useServe) {
-  plugins.push(serve({ host: 'localhost', port: 8000, contentBase: [output, './'] }));
+  plugins.push(serve({ host: 'localhost', port: port, contentBase: [output, './'] }));
   plugins.push({
     name: 'html',
     generateBundle: () => {
-      console.log(`Move examples/vanilla/* to ${output}/*`)
+      console.log(`Move examples/vanilla/* to ${output}/*`);
       const html = fs
         .readFileSync('examples/vanilla/index.html', 'utf-8')
         .replace('../../build/js/riot-mui.js', './js/riot-mui.js')
@@ -44,7 +46,7 @@ export default [
       globals: { 'riot': 'riot' },
     },
     external: ['riot'],
-    plugins: [emptyDirectories(output)].concat(plugins, terser()),
+    plugins: (cleanup ? [emptyDirectories(output)] : []).concat(plugins, terser()),
   },
   {
     input: 'src/bundle.js',
