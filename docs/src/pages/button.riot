@@ -2,7 +2,7 @@
   <h1>Material Button</h1>
   <p>The API documentation of the Riot MUI Button component.</p>
   <h2>Import</h2>
-  <pre><code class="language-js">import \{ Button } from 'riot-mui';</code></pre>
+  <pre><code class="language-js">import \{ MaterialButton } from 'riot-mui';</code></pre>
 
   <h2 id="contained-buttons">Contained Buttons</h2>
   <div class="example-container">
@@ -219,12 +219,22 @@
         name: 'href',
         type: 'string',
         default: '',
-        description: 'Set a link when the button is triggered.'
+        description: 'Set a link when the button is triggered. This will use the <a> tag.'
       }, {
         name: 'target',
         type: 'string',
         default: '',
         description: 'Set a target for the link when the button is triggered.'
+      }, {
+        name: 'type',
+        type: 'string',
+        default: '',
+        description: 'Type of the button, this is used with the <button> tag.'
+      }, {
+        name: 'waves-center',
+        type: 'boolean',
+        default: 'false',
+        description: 'Set the position of the wave in the center or on the cursor position.'
       }, {
         name: 'waves-opacity',
         type: 'number',
