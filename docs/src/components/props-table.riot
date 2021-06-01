@@ -3,16 +3,16 @@
     <thead>
       <tr>
         <th align="left">Name</th>
-        <th align="left">Type</th>
-        <th align="left">Default</th>
+        <th align="left" if="{ props.kind !== 'classes' }">Type</th>
+        <th align="left" if="{ props.kind !== 'classes' }">Default</th>
         <th align="left">Description</th>
       </tr>
     </thead>
     <tbody>
       <tr each="{property in props.properties}">
-        <td align="left"><span class="prop-name">{ property.name }</span></td>
-        <td align="left"><span class="prop-type">{ property.type }</span></td>
-        <td align="left">{ property.default }</td>
+        <td align="left"><span class="prop-name"><code>{ property.name }</code></span></td>
+        <td align="left" if="{ props.kind !== 'classes' }"><span class="prop-type">{ property.type }</span></td>
+        <td align="left" if="{ props.kind !== 'classes' }">{ property.default }</td>
         <td align="left">{ property.description }</td>
       </tr>
     </tbody>

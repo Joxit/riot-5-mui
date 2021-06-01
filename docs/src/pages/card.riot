@@ -1,0 +1,109 @@
+<card>
+  <h1>Material Card</h1>
+  <p>The API documentation of the Riot MUI Button component.</p>
+  <h2>Import</h2>
+  <pre><code class="language-js">import \{ MaterialCard } from 'riot-mui';</code></pre>
+
+  <h2 id="simple-card">Simple Card</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-card>
+          <div class="material-card-content">
+            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+          </div>
+        </material-card>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{simpleCard}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="card-with-title-and-action">Card with title and action</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-card>
+          <div class="material-card-title">Title</div>
+          <div class="material-card-content">
+            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+          </div>
+          <div class="material-card-action">
+            <div class="material-card-action-item">
+              <material-waves opacity="0.25" color="#000" />
+              First action
+            </div>
+            <div class="material-card-action-item">
+              <material-waves opacity="0.25" color="#000" />
+              Second action
+            </div>
+          </div>
+        </material-card>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{cardWithTitle}</code></pre>
+    </div>
+  </div>
+
+  <h2>Props</h2>
+  <props-table kind="classes" properties="{ properties }"></props-table>
+
+
+  <script>
+    import {
+      MaterialWaves,
+      MaterialCard
+    } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialWaves,
+        MaterialCard,
+        PropsTable
+      },
+      simpleCard: `
+<material-card>
+  <div class="material-card-content">
+    Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+  </div>
+</material-card>
+`.trim(),
+      cardWithTitle: `
+<material-card>
+  <div class="material-card-title">Title</div>
+  <div class="material-card-content">
+    Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+  </div>
+  <div class="material-card-action">
+    <div class="material-card-action-item">
+      <material-waves opacity="0.25" color="#000"/>
+      First action
+    </div>
+    <div class="material-card-action-item">
+      <material-waves opacity="0.25" color="#000"/>
+      Second action
+    </div>
+  </div>
+</material-card>
+`.trim(),
+      alert(text) {
+        window.alert(text)
+      },
+      properties: [{
+        name: 'material-card-title',
+        description: 'Class for title container.'
+      }, {
+        name: 'material-card-content',
+        description: 'Class for card content.'
+      }, {
+        name: 'material-card-action',
+        description: 'Class for card actions.'
+      }, {
+        name: 'material-card-action-item',
+        description: 'Class for card action items. Should be inside material-card-action.'
+      }]
+    }
+  </script>
+</card>

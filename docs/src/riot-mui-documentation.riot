@@ -6,11 +6,15 @@
     <route path="{route('button')}">
       <button-page />
     </route>
+    <route path="{route('card')}">
+      <card-page />
+    </route>
 
   </router>
   <script>
     import HomePage from './pages/home.riot'
     import ButtonPage from './pages/button.riot'
+    import CardPage from './pages/card.riot'
     import {
       Router,
       Route,
@@ -20,6 +24,7 @@
       components: {
         HomePage,
         ButtonPage,
+        CardPage,
         Route,
         Router
       },

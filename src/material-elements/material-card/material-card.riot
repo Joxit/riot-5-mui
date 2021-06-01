@@ -1,21 +1,3 @@
 <material-card>
-  <div class="title" if="{state.titleExist}">
-    <slot name="title"></slot>
-  </div>
   <slot />
-  <script>
-    export default {
-      state: {
-        titleExist: true
-      },
-      onMounted(props, state) {
-        const title = this.$('.title');
-        if (!title.children || title.children.length === 0) {
-          this.update({
-            titleExist: false
-          });
-        }
-      }
-    }
-  </script>
 </material-card>
