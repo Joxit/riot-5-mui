@@ -7,17 +7,35 @@
   </div>
   <input type="hidden" value="{ state.checked }">
   <script>
+    import {
+      attributeToBool,
+      tryCall
+    } from '../../mixins/utilities';
+    const SUPPORTED_ATTRIBUTES = ['disabled', 'indeterminate'];
     export default {
       onBeforeMount(props, state) {
         state.checked = props.checked !== undefined ? props.checked : state.checked;
       },
+      onMounted(props, state) {
+        this.updateAttributes(props, state);
+      },
       onBeforeUpdate(props, state) {
         state.checked = props.checked !== undefined ? props.checked : state.checked;
       },
+      onUpdated(props, state) {
+        this.updateAttributes(props, state);
+      },
+      updateAttributes(props, state) {
+        SUPPORTED_ATTRIBUTES.forEach(attr => {
+          this.root.setAttribute(attr, attributeToBool(props[attr]))
+        })
+      },
       onChange(event) {
-        if (typeof this.props.onChange === 'function') {
-          this.props.onChange(!this.state.checked, event)
+        if (attributeToBool(this.props.disabled)) {
+          return;
         }
+        event.target.checked = !this.state.checked
+        tryCall(this.props.onChange, event)
         this.update({
           checked: !this.state.checked
         });

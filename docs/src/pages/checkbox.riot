@@ -1,0 +1,64 @@
+<checkbox>
+  <h1>Material Checkbox</h1>
+  <p>The API documentation of the Riot MUI Checkbox component.</p>
+  <h2>Import</h2>
+  <pre><code class="language-js">import \{ MaterialCard } from 'riot-mui';</code></pre>
+
+  <h2 id="simple-checkbox">Simple Checkbox</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-checkbox onChange="{ (e) => console.log(e) }" />
+        <material-checkbox>Checkbox with label</material-checkbox>
+        <material-checkbox indeterminate onChange="{ (e) => console.log(e) }">Indeterminate checkbox</material-checkbox>
+        <material-checkbox checked="{true}">Checkbox managed by props</material-checkbox>
+        <material-checkbox disabled onChange="{ (e) => console.log(e) }">Disabled checkbox</material-checkbox>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{simpleCheckbox}</code></pre>
+    </div>
+  </div>
+
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
+
+  <script>
+    import {
+      MaterialCheckbox,
+      MaterialCard
+    } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialCheckbox,
+        MaterialCard,
+        PropsTable
+      },
+      simpleCheckbox: `
+<material-checkbox onChange="{ (e) => console.log(e) }" />
+<material-checkbox>Checkbox with label</material-checkbox>
+<material-checkbox indeterminate onChange="{ (e) => console.log(e) }">Indeterminate checkbox</material-checkbox>
+<material-checkbox checked="{true}">Checkbox managed by props</material-checkbox>
+<material-checkbox disabled onChange="{ (e) => console.log(e) }">Disabled checkbox</material-checkbox>
+`.trim(),
+      properties: [{
+        name: 'indeterminate',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the check sign to indeterminate.'
+      }, {
+        name: 'disabled',
+        type: 'boolean',
+        default: 'false',
+        description: 'Disable the checkbox.'
+      },{
+        name: 'onChange',
+        type: 'function',
+        default: '',
+        description: 'Callback triggered when the value changes. The first argument is the Event. You can get the value from e.target.checked'
+      }]
+    }
+  </script>
+</checkbox>

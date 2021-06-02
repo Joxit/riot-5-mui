@@ -9,12 +9,16 @@
     <route path="{route('card')}">
       <card-page />
     </route>
+    <route path="{route('checkbox')}">
+      <checkbox-page />
+    </route>
 
   </router>
   <script>
     import HomePage from './pages/home.riot'
     import ButtonPage from './pages/button.riot'
     import CardPage from './pages/card.riot'
+    import CheckboxPage from './pages/checkbox.riot'
     import {
       Router,
       Route,
@@ -25,6 +29,7 @@
         HomePage,
         ButtonPage,
         CardPage,
+        CheckboxPage,
         Route,
         Router
       },
@@ -52,6 +57,7 @@
     }
     :host .example-rendered .example-row>* {
       margin: 0.5em 1em;
+      display: inline-block;
     }
     :host .example-rendered .example-row>*:first-child {
       margin-left: 0;
