@@ -43,6 +43,7 @@
         this.$('input').addEventListener('blur', this.changeFocus);
       },
       onBeforeUpdate(props, states) {
+        this.state.value = this.$('input').value;
         this.state.error = states.value.length !== 0 && !this.validator.validate(states.value)
       },
       /**
