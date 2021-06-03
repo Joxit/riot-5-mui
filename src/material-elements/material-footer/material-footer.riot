@@ -1,34 +1,26 @@
 <material-footer>
-  <slot name="sections"></slot>
-  <div class="mini-footer">
-    <slot name="logo"></slot>
-    <slot name="link-list"></slot>
+  <div>
+    <slot />
   </div>
-  <slot />
   <script>
+    const SUPPORTED_ATTRIBUTES = ['mini'];
+    import {
+      attributeToBool
+    } from '../../mixins/utilities';
     export default {
       onMounted(props, state) {
-        this.updateClasses();
+        this.updateAttributes(props, state);
       },
       onUpdated(props, state) {
-        this.updateClasses();
+        this.updateAttributes(props, state);
       },
-      updateClasses() {
-        const miniFooter = this.$('.mini-footer');
-        for (let i = 0; i < this.root.children.length; i++) {
-          this.updateClass(this.root.children[i]);
-        }
-        if (miniFooter) {
-          for (let i = 0; i < miniFooter.children.length; i++) {
-            this.updateClass(miniFooter.children[i]);
+      updateAttributes(props, state) {
+        SUPPORTED_ATTRIBUTES.forEach(attr => {
+          if (attributeToBool(props[attr])) {
+            this.root.setAttribute(attr, true);
           }
-        }
+        })
       },
-      updateClass(node) {
-        if (node.slot && node.slot.length > 0) {
-          node.classList.add(`material-footer-${node.slot}`);
-        }
-      }
     }
   </script>
 </material-footer>

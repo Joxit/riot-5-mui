@@ -27,10 +27,22 @@ material-footer {
     padding-bottom: 24px;
     ul { margin-right: 16px; }
   }
-  .mini-footer {
+  &[mini="true"] > * {
     display: block;
     @media screen and (min-width: 760px) { display: inline-flex; }
+    ul {
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      li {
+        margin-bottom: 0;
+        margin-right: 16px;
+        @media screen and (min-width: 760px)  { line-height: 36px; }
+      }
+    }
   }
+  h1, h2, h3, h4, h5,
   .material-footer-section-header,
   .material-footer-logo {
     margin-bottom: 16px;
@@ -41,17 +53,6 @@ material-footer {
     @media screen and (min-width: 760px) {
       margin-bottom: 0;
       margin-right: 16px;
-    }
-  }
-  ul.material-footer-link-list {
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    li {
-      margin-bottom: 0;
-      margin-right: 16px;
-      @media screen and (min-width: 760px)  { line-height: 36px; }
     }
   }
 }
