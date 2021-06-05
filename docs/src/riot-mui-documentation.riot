@@ -15,6 +15,9 @@
     <route path="{route('footer')}">
       <footer-page />
     </route>
+    <route path="{route('navbar')}">
+      <navbar-page />
+    </route>
 
   </router>
   <script>
@@ -23,6 +26,7 @@
     import CardPage from './pages/card.riot'
     import CheckboxPage from './pages/checkbox.riot'
     import FooterPage from './pages/footer.riot'
+    import NavbarPage from './pages/navbar.riot'
     import {
       Router,
       Route,
@@ -35,6 +39,7 @@
         CardPage,
         CheckboxPage,
         FooterPage,
+        NavbarPage,
         Route,
         Router
       },
@@ -60,7 +65,7 @@
       flex-direction: row;
       justify-content: center;
     }
-    :host .example-rendered .example-row>* {
+    :host .example-rendered .example-row>*:not(material-navbar) {
       margin: 0.5em 1em;
       display: inline-block;
     }

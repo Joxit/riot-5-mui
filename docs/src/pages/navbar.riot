@@ -1,0 +1,72 @@
+<navbar>
+  <h1>Material Navbar</h1>
+  <p>The API documentation of the Riot MUI Navbar component.</p>
+  <h2>Import</h2>
+  <pre><code class="language-js">import \{ MaterialNavbar } from 'riot-mui';</code></pre>
+
+  <h2 id="simple-navbar">Simple Navbar</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-navbar><span class="logo">Simple navbar</span></material-navbar>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{simpleNavbar}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="simple-navbar">Navbar with menu</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-navbar>
+          <span class="logo">Navbar with menu</span>
+          <material-button icon outlined color="#fff" class="menu"><i class="icon">+</i></material-button>
+        </material-navbar>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{menuNavbar}</code></pre>
+    </div>
+  </div>
+
+  <h2>Classes</h2>
+  <props-table properties="{ classes }" kind="classes"></props-table>
+
+  <script>
+    import {
+      MaterialNavbar,
+      MaterialButton
+    } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialNavbar,
+        MaterialButton,
+        PropsTable
+      },
+      simpleNavbar: `
+<material-navbar>Simple navbar</material-navbar>
+`.trim(),
+      menuNavbar: `
+  <material-navbar>
+    <span class="logo">Navbar with menu</span>
+    <material-button icon outlined color="#fff" class="menu"><i class="icon">+</i></material-button>
+  </material-navbar>
+`.trim(),
+      classes: [{
+        name: 'logo',
+        description: 'Class to add a logo in the left of the navbar.'
+      }, {
+        name: 'menu',
+        description: 'Class to add a menu button in the right of the navbar.'
+      }]
+    }
+  </script>
+  <style>
+    :host .example-row {
+      width: 100%;
+    }
+  </style>
+</navbar>

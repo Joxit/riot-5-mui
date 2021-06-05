@@ -12,28 +12,38 @@ $material-navbar-height: 70px;
 }
 
 material-navbar {
-  display: block;
+  display: flex;
   color: $material-navbar-font-color;
   @include vendor-prefix(box-shadow,"0 8px 17px 0 rgba(0, 0, 0, 0.12), 0 6px 20px 0 rgba(0, 0, 0, 0.14)");
   background-color: $material-navbar-background-color;
   width: 100%;
   height: $material-navbar-height;
   line-height: $material-navbar-height;
-  &:not(material-input) {
-    line-height: 0px;
-  }
+  // &:not(material-input) {
+  //   line-height: 0px;
+  // }
   a { color: $material-navbar-font-color; }
 
   .nav-wrapper {
     position: relative;
-    height: 100%;
+    padding: 0 1em;
+    text-decoration: none;
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
     .logo {
-      line-height: $material-navbar-height - 4;
+      font-size: 1.25em;
+      flex-shrink: 0;
+      flex-grow: 1;
+    }
+    .menu {
+      flex-shrink: 0;
+      flex-grow: 0;
     }
     // Include a possible elements or blocks
     // like a logotype or links
   }
-  &[fixed] {
+  &[fixed="true"], &[fixed] {
     position: relative;
     height: $material-navbar-height;
     z-index: 998;
