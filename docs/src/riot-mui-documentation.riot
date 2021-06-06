@@ -1,25 +1,31 @@
 <riot-mui-documentation>
-  <router base="#!">
-    <route path="{route('')}">
-      <home-page />
-    </route>
-    <route path="{route('button')}">
-      <button-page />
-    </route>
-    <route path="{route('card')}">
-      <card-page />
-    </route>
-    <route path="{route('checkbox')}">
-      <checkbox-page />
-    </route>
-    <route path="{route('footer')}">
-      <footer-page />
-    </route>
-    <route path="{route('navbar')}">
-      <navbar-page />
-    </route>
-
-  </router>
+  <header>
+    <material-navbar>
+      <span class="logo">Riot Material UI Documentation</span>
+    </material-navbar>  
+  </header>
+  <main>
+    <router base="#!">
+      <route path="{route('')}">
+        <home-page />
+      </route>
+      <route path="{route('button')}">
+        <button-page />
+      </route>
+      <route path="{route('card')}">
+        <card-page />
+      </route>
+      <route path="{route('checkbox')}">
+        <checkbox-page />
+      </route>
+      <route path="{route('footer')}">
+        <footer-page />
+      </route>
+      <route path="{route('navbar')}">
+        <navbar-page />
+      </route>
+    </router>
+  </main>
   <script>
     import HomePage from './pages/home.riot'
     import ButtonPage from './pages/button.riot'
@@ -27,6 +33,9 @@
     import CheckboxPage from './pages/checkbox.riot'
     import FooterPage from './pages/footer.riot'
     import NavbarPage from './pages/navbar.riot'
+    import {
+      MaterialNavbar
+    } from 'riot-mui'
     import {
       Router,
       Route,
@@ -41,7 +50,8 @@
         FooterPage,
         NavbarPage,
         Route,
-        Router
+        Router,
+        MaterialNavbar
       },
       route(path) {
         return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`
@@ -74,6 +84,9 @@
     }
     :host .example-rendered .example-row>*:last-child {
       margin-right: 0;
+    }
+    :host main {
+      padding: 0 2em;
     }
   </style>
 </riot-mui-documentation>
