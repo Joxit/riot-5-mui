@@ -86,6 +86,9 @@ material-button > :first-child {
         @include vendor-prefix(user-select, 'none');
       }
     }
+    material-waves {
+      border-radius: 50vw;
+    }
   }
   &[icon='true'] {
     padding: 0;
