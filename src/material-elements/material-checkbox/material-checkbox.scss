@@ -78,7 +78,8 @@ material-checkbox {
     cursor: pointer;
   }
 
-  &[indeterminate='true'] {
+  &[indeterminate='true'],
+  &[indeterminate=''] {
     .checkbox .checkmark {
       border-bottom: none;
     }
@@ -91,7 +92,8 @@ material-checkbox {
     }
   }
 
-  &[disabled='true'] {
+  &[disabled='true'],
+  &[disabled=''] {
     .checkbox {
       border-color: $material-chekbox-disabled-border-color;
     }
