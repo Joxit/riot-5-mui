@@ -3,24 +3,6 @@
     <slot />
   </div>
   <script>
-    const SUPPORTED_ATTRIBUTES = ['mini'];
-    import {
-      attributeToBool
-    } from '../../mixins/utilities';
-    export default {
-      onMounted(props, state) {
-        this.updateAttributes(props, state);
-      },
-      onUpdated(props, state) {
-        this.updateAttributes(props, state);
-      },
-      updateAttributes(props, state) {
-        SUPPORTED_ATTRIBUTES.forEach(attr => {
-          if (attributeToBool(props[attr])) {
-            this.root.setAttribute(attr, true);
-          }
-        })
-      },
-    }
+    export default {}
   </script>
 </material-footer>
