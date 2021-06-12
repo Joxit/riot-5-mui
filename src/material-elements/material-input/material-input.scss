@@ -16,119 +16,149 @@ $material-input-height: 24px;
 }
 
 material-input {
-    display: block;
-    padding: 8px 0;
+  display: block;
+  padding: 8px 0;
+  position: relative;
+  /** LABEL PLACEHOLDER **/
+  // It was be created only for prevent a label overflowing
+  .label-placeholder {
+    height: 15px;
+    width: 100%;
+  }
+  .input-content {
+    font-size: $material-input-font-size;
     position: relative;
-    /** LABEL PLACEHOLDER **/
-    // It was be created only for prevent a label overflowing
-    .label-placeholder {
-      height: 15px;
-      width: 100%;
-    }
-    .input-content {
+    padding: 0 calc(.5em - 1px);
+    /** LABEL **/
+    label {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      font: inherit;
+      color: $material-input-underline-unfocused-background;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       font-size: $material-input-font-size;
-      color: $material-input-color;
-      position: relative;
-      /** LABEL **/
+      font-weight: 400;
+      line-height: $material-input-height;
+      @include vendor-prefix(transform, none);
+      @include vendor-prefix(transition, 'transform .2s');
+      @include vendor-prefix(transform-origin, left top);
+    }
+    &.not-empty {
       label {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        font: inherit;
-        color: $material-input-underline-unfocused-background;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        font-size: $material-input-font-size;
-        font-weight: 400;
-        line-height: $material-input-height;
-        @include vendor-prefix(transform,none);
-        @include vendor-prefix(transition,'transform .2s');
-        @include vendor-prefix(transform-origin,left top);
+        @include vendor-prefix(transform, 'translate3d(0, -70%, 0) scale(0.70)');
+        @include vendor-prefix(transition, 'transform .2s');
+        @include vendor-prefix(transform-origin, left top);
       }
-      &.not-empty {
-        label {
-          @include vendor-prefix(transform, "translate3d(0, -70%, 0) scale(0.70)");
-          @include vendor-prefix(transition,'transform .2s');
-          @include vendor-prefix(transform-origin,left top);
-        }
-      }
-      /** INPUT **/
-      input {
-        position: relative;
-        outline: none;
-        box-shadow: none;
-        padding: 0;
-        width: 100%;
+    }
+    /** INPUT **/
+    input {
+      position: relative;
+      outline: none;
+      box-shadow: none;
+      padding: 0;
+      width: 100%;
+      background: transparent;
+      border: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-weight: 400;
+      line-height: $material-input-height;
+      height: $material-input-height;
+      color: $material-input-color;
+    }
+    /** ICON **/
+    .iconWrapper {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: $material-input-icon-width;
+      height: $material-input-icon-width;
+      margin-left: -$material-input-icon-width + 7;
+      left: 100%;
+      margin-top: -7px;
+      material-button {
         background: transparent;
-        border: none;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        font-weight: 400;
-        line-height: $material-input-height;
-        height: $material-input-height;
-      }
-      /** ICON **/
-      .iconWrapper {
-        display: inline-block;
-        position: absolute;
-        top:0;
-        left: 0;
-        bottom:0;
-        right: 0;
-        width: $material-input-icon-width;
-        height: $material-input-icon-width;
-        margin-left: -$material-input-icon-width + 7;
-        left: 100%;
-        margin-top: -7px;
-        material-button {
-          background: transparent;
-          .content {
-            .material-icons {
-               color: $material-input-underline-unfocused-background;
-            }
+        .content {
+          .material-icons {
+            color: $material-input-underline-unfocused-background;
           }
         }
       }
     }
-    /** UNDERLINE **/
-    .underline {
-      position: relative;
-      display: block;
-      .unfocused-line {
-        height: $material-input-underline-height;
-        background: $material-input-underline-unfocused-background;
-      }
+  }
+  /** UNDERLINE **/
+  .underline {
+    position: relative;
+    display: block;
+    .unfocused-line {
+      height: $material-input-underline-height;
+      background: $material-input-underline-unfocused-background;
+    }
+    .focused-line {
+      height: $material-input-underline-height + 1;
+      background: $material-input-underline-unfocused-background;
+      @include vendor-prefix(transform, scale3d(0, 1, 1));
+      @include vendor-prefix(transition, 'transform .2s ease-in');
+    }
+    /** Focused behavior **/
+    &.focused {
       .focused-line {
-        height: $material-input-underline-height+1;
-        background: $material-input-underline-unfocused-background;
-        @include vendor-prefix(transform,scale3d(0,1,1));
-        @include vendor-prefix(transition,"transform .2s ease-in");
-      }
-      /** Focused behavior **/
-      &.focused {
-        .focused-line {
-          @include vendor-prefix(transform,none);
-          @include vendor-prefix(transition,"transform .2s ease-out");
-        }
-      }
-      /** Error **/
-      &.error {
-        .unfocused-line, .focused-line {
-          background: $material-input-error-underline-background;
-          @include vendor-prefix(transition,"background .2s ease-out");
-        }
+        @include vendor-prefix(transform, none);
+        @include vendor-prefix(transition, 'transform .2s ease-out');
       }
     }
-    /** Disabled **/
-    &[disabled="true"] {
-      label {
-        color: $material-input-underline-disabled-background;
-      }
-      .underline {
-        .unfocused-line {
-          background: $material-input-underline-disabled-background;
-        }
+    /** Error **/
+    &.error {
+      .unfocused-line,
+      .focused-line {
+        background: $material-input-error-underline-background;
+        @include vendor-prefix(transition, 'background .2s ease-out');
       }
     }
+  }
+  /** Disabled **/
+  &[outlined='true'],
+  &[outlined=''],
+  &[rounded='true'],
+  &[rounded='']  {
+    .input-content {
+      border: $material-input-underline-height solid;
+      border-color: $material-input-underline-unfocused-background;
+      border-radius: 0.375em;
+    }
+  }
+
+  &[rounded='true'],
+  &[rounded=''] {
+    .input-content {
+      border-radius: 50vw;
+    }
+  }
+  /** Disabled **/
+  &[disabled='true'],
+  &[disabled=''] {
+    label {
+      color: $material-input-underline-disabled-background;
+    }
+    .underline {
+      .unfocused-line {
+        background: $material-input-underline-disabled-background;
+      }
+    }
+
+    &[outlined='true'],
+    &[outlined=''],
+    &[rounded='true'],
+    &[rounded=''] {
+      .input-content {
+        border-color: $material-input-underline-disabled-background;
+      }
+    }
+  }
 }
