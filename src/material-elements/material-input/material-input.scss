@@ -35,6 +35,7 @@ material-input {
       top: 0;
       right: 0;
       left: 0;
+      padding: 0 calc(.5em - 1px);
       font: inherit;
       color: $material-input-underline-unfocused-background;
       -webkit-font-smoothing: antialiased;
@@ -51,6 +52,7 @@ material-input {
         @include vendor-prefix(transform, 'translate3d(0, -70%, 0) scale(0.70)');
         @include vendor-prefix(transition, 'transform .2s');
         @include vendor-prefix(transform-origin, left top);
+        padding: 0;
       }
     }
     /** INPUT **/

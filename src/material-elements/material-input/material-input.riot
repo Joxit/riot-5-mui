@@ -4,7 +4,7 @@
     <label for="input" if="{props.label}">{props.label}</label>
     <input type="{props.type||'text'}" disabled="{state.disabled}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{state.required}" />
     <div class="iconWrapper" if="{props.icon}">
-      <material-button center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" rounded="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
+      <material-button inverted center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" icon="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
         <slot />
       </material-button>
     </div>
@@ -17,6 +17,7 @@
   <script>
     import Validate from '../../mixins/validate';
     const SUPPORTED_ATTRIBUTES = ['disabled', 'rounded', 'outlined', 'inverted'];
+    import MaterialButton from '../material-button/material-button.riot';
     import {
       attributeToBool,
       HTML,
@@ -31,6 +32,9 @@
         required: false,
         error: false,
         attributes: {},
+      },
+      components: {
+        MaterialButton
       },
       onMounted(props, state) {
         this.required = "";
