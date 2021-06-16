@@ -7,7 +7,7 @@
     </div>
   </a>
   <button type="{ props.type }" if="{ !props.href }">
-    <material-waves if="{!attributeToBool(this.props.disabled)}" center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
+    <material-waves if="{!attributeToBool(props.disabled)}" center="{ props.wavesCenter }" rounded="{ props.rounded }" opacity="{ props.wavesOpacity }" color="{ props.wavesColor }" duration="{ props.wavesDuration }" onWaveStart="{ onWaveStart }" onWaveEnd="{ onWaveEnd }">
     </material-waves>
     <div class="content">
       <slot />
@@ -19,7 +19,8 @@
     import MaterialWaves from '../material-waves/material-waves.riot';
     import {
       attributeToBool,
-      tryCall
+      tryCall,
+      attributesObj
     } from '../../mixins/utilities';
     export default {
       state: {
@@ -47,15 +48,17 @@
             state.attributes[attr] = false;
           }
         })
+        const textColor = state.attributes.inverted ? props.color : props.textColor;
+        const color = state.attributes.inverted ? props.textColor : props.color;
+
+        this.root.firstElementChild.style.background = color;
+        this.root.firstElementChild.style.color = textColor;
+
+
         if (state.attributes.outlined) {
-          this.root.firstElementChild.style['border-color'] = props.color;
-          this.root.firstElementChild.style.color = props.color;
-        } else if (state.attributes.inverted) {
-          this.root.firstElementChild.style.color = props.color;
-          this.root.firstElementChild.style.background = props.textColor;
-        } else {
-          this.root.firstElementChild.style.background = props.color;
-          this.root.firstElementChild.style.color = props.textColor;
+          this.root.firstElementChild.style['border-color'] = color;
+          this.root.firstElementChild.style.color = color;
+          this.root.firstElementChild.style.background = '';
         }
       },
       /**
