@@ -4,7 +4,7 @@
     <label for="input" if="{props.label}">{props.label}</label>
     <input type="{props.type||'text'}" disabled="{state.disabled}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{state.required}" />
     <div class="iconWrapper" if="{state.icon}">
-      <material-button inverted center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" icon="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
+      <material-button color="rgba(0,0,0,0)" center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" icon="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
         <slot />
       </material-button>
     </div>
@@ -62,18 +62,15 @@
       },
       updateAttributes(props, state) {
         const attributes = attributesObj(SUPPORTED_ATTRIBUTES, props)
+        const color = attributes.inverted ? props.textColor : props.color;
+        const textColor = attributes.inverted ? props.color : props.textColor;
+
+        HTML.children(this.$('.underline')).forEach(e => e.style.background = color);
+        this.$('input').style.color = textColor;
+        this.$('label') && (this.$('label').style.color = textColor);
+
         if (attributes.outlined || attributes.rounded) {
-          this.$('.input-content').style['border-color'] = props.color;
-          this.$('input').style.color = props.textColor;
-          this.$('label') && (this.$('label').style.color = props.textColor);
-        } else if (attributes.inverted) {
-          HTML.children(this.$('.underline')).forEach(e => e.style.background = props.textColor);
-          this.$('input').style.color = props.color;
-          this.$('label') && (this.$('label').style.color = props.color);
-        } else {
-          HTML.children(this.$('.underline')).forEach(e => e.style.background = props.color);
-          this.$('input').style.color = props.textColor;
-          this.$('label') && (this.$('label').style.color = props.textColor);
+          this.$('.input-content').style['border-color'] = color;
         }
       },
       /**
