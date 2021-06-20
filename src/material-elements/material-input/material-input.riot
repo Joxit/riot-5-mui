@@ -2,14 +2,14 @@
   <div class="label-placeholder"></div>
   <div class="input-content {state.value ? 'not-empty' : null } { state.error ? 'error': null }">
     <label for="input" if="{props.label}">{props.label}</label>
-    <input type="{props.type||'text'}" disabled="{state.disabled}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{state.required}" />
-    <div class="iconWrapper" if="{state.icon}">
+    <input type="{props.type||'text'}" disabled="{attributeToBool(props.disabled)}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{state.required}" />
+    <div class="iconWrapper" if="{attributeToBool(props.icon)}">
       <material-button color="rgba(0,0,0,0)" center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" icon="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
         <slot />
       </material-button>
     </div>
   </div>
-  <div if="{!state.outlined && !state.rounded}" class="underline {state.focused ? 'focused' : null} {state.error ? 'error' : null}">
+  <div if="{!attributeToBool(props.outlined) && !attributeToBool(props.rounded)}" class="underline {state.focused ? 'focused' : null} {state.error ? 'error' : null}">
     <div class="unfocused-line"></div>
     <div class="focused-line"></div>
   </div>
@@ -20,6 +20,7 @@
     import MaterialButton from '../material-button/material-button.riot';
     import {
       attributeToBool,
+      tryCall,
       HTML,
       attributesObj
     } from '../../mixins/utilities';
@@ -31,7 +32,6 @@
         disabled: false,
         required: false,
         error: false,
-        attributes: {},
       },
       components: {
         MaterialButton
@@ -45,8 +45,7 @@
         // Attributes
         this.update({
           showIcon: false,
-          value: this.props.value || '',
-          ...attributesObj(SUPPORTED_ATTRIBUTES, props)
+          value: this.props.value || ''
         });
 
         this.$('input').addEventListener('focus', this.changeFocus);
@@ -73,39 +72,25 @@
           this.$('.input-content').style['border-color'] = color;
         }
       },
-      /**
-       * When element focus changed update expressions.
-       */
       changeFocus(e) {
         if (this.disabled) return false;
+        const focused = this.$('input') == document.activeElement;
+        if (this.state.focused == focused) return
         this.update({
-          focused: this.$('input') == document.activeElement
+          focused
         });
-        if (this.props.focuschanged && (typeof(this.props.focuschanged) === "function")) {
-          this.props.focuschanged(this.focused, e);
-        }
+        tryCall(this.props.onFocus, focused, e);
       },
-      /**
-       * Change input value should change tag behavior.
-       * @param e
-       */
       changeValue(e) {
         this.update({
           value: this.$('input').value
         });
-        if (this.props.valuechanged && (typeof(this.props.valuechanged) === "function")) {
-          this.props.valuechanged(this.$('input').value, e);
-        }
+        tryCall(this.props.onValueChange, this.$('input').value, e);
       },
-      /**
-       * Fire clicking on icon to outside world
-       * @param e
-       */
       iconClickHandler(e) {
-        if (this.props.iconclicked && typeof this.props.iconclicked === 'function') {
-          this.props.iconclicked.call(this, e);
-        }
-      }
+        tryCall.call(this, this.props.onIconClick, e);
+      },
+      attributeToBool
     }
   </script>
 </material-input>
