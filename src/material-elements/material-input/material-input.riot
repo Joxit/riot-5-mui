@@ -2,7 +2,7 @@
   <div class="label-placeholder"></div>
   <div class="input-content {state.value ? 'not-empty' : null } { state.error ? 'error': null }">
     <label for="input" if="{props.label}">{props.label}</label>
-    <input type="{props.type||'text'}" disabled="{attributeToBool(props.disabled)}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{state.required}" />
+    <input type="{props.type||'text'}" disabled="{attributeToBool(props.disabled)}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{attributeToBool(props.required)}" />
     <div class="iconWrapper" if="{attributeToBool(props.icon)}">
       <material-button color="rgba(0,0,0,0)" center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" icon="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
         <slot />
@@ -54,7 +54,7 @@
       },
       onBeforeUpdate(props, states) {
         this.state.value = this.$('input').value;
-        this.state.error = states.value.length !== 0 && !this.validator.validate(states.value)
+        this.state.error = (states.value.length !== 0 && !this.validator.validate(states.value)) || (states.value.length === 0 && attributeToBool(props.required))
       },
       onUpdated(props, state) {
         this.updateAttributes(props, state);
@@ -73,7 +73,7 @@
         }
       },
       changeFocus(e) {
-        if (this.disabled) return false;
+        if (attributeToBool(this.props.disabled)) return false;
         const focused = this.$('input') == document.activeElement;
         if (this.state.focused == focused) return
         this.update({
