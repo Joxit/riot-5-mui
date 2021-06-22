@@ -1,0 +1,284 @@
+<input-page>
+  <h1>Material Input</h1>
+  <p>The API documentation of the Riot MUI Input component.</p>
+  <h2>Import</h2>
+  <pre><code class="language-js">import \{ MaterialInput } from 'riot-mui';</code></pre>
+
+  <h2 id="inputs">Inputs</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input placeholder="Text Input"></material-input>
+        <material-input placeholder="Text Input" color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input placeholder="Text Input" disabled>Disabled</material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{containedInputs}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="outlined-inputs">Outlined Inputs</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input placeholder="Text Input" outlined>Default</material-input>
+        <material-input placeholder="Text Input" outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input placeholder="Text Input" outlined disabled>Disabled</material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{outlinedInputs}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="inverted-inputs">Inverted Inputs</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input placeholder="Text Input" inverted>Default</material-input>
+        <material-input placeholder="Text Input" inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input placeholder="Text Input" inverted outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input placeholder="Text Input" inverted disabled>Disabled</material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{invertedInputs}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="rounded-inputs">Rounded Inputs</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input placeholder="Text Input" rounded>Default</material-input>
+        <material-input placeholder="Text Input" rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input placeholder="Text Input" rounded inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input placeholder="Text Input" rounded disabled>Default</material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{roundedExample}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="inputs-with-label">Inputs with Label</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input label="Text Input">Default</material-input>
+        <material-input label="Text Input" color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input label="Text Input" inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input label="Text Input" outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input label="Text Input" rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input label="Text Input" disabled>Disabled</material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{labelExample}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="outlined-inputs-with-label">Outlined inputs with Label</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input icon placeholder="Text Input">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input icon placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input icon inverted placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input icon outlined placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input icon rounded placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input icon placeholder="Text Input" disabled>
+          <i class="material-icons">search</i>
+        </material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{iconExample}</code></pre>
+    </div>
+  </div>
+
+  <h2 id="handlers">Handler</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-input placeholder="Print changes in console" onValueChange="{console.log}">
+        </material-input>
+        <material-input icon onIconClick="{e => alert('icon clicked') }" placeholder="Click on icon" color="#ffdc7d" text-color="#f14668">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input placeholder="On Focus" onFocus="{(focus, e) => alert(`focus: ${focus}`)}" color="#ffdc7d" text-color="#f14668">
+        </material-input>
+        <material-input type="number" placeholder="Numbers">
+        </material-input>
+        <material-input type="email" placeholder="Email">
+        </material-input>
+        <material-input valid="{() => false}" placeholder="Custom Validation">
+          <i class="material-icons">search</i>
+        </material-input>
+        <material-input  placeholder="Required" required>
+          <i class="material-icons">search</i>
+        </material-input>
+      </div>
+    </div>
+    <div class="example-code">
+      <pre><code class="language-html">{handlersExample}</code></pre>
+    </div>
+  </div>
+
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
+
+  <script>
+    import {
+      MaterialInput,
+    } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialInput,
+        PropsTable
+      },
+      containedInputs: `
+<material-input placeholder="Text Input"></material-input>
+<material-input placeholder="Text Input" color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input placeholder="Text Input" disabled>Disabled</material-input>
+`.trim(),
+      outlinedInputs: `
+<material-input placeholder="Text Input" outlined>Default</material-input>
+<material-input placeholder="Text Input" outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input placeholder="Text Input" outlined disabled>Disabled</material-input>
+`.trim(),
+      invertedInputs: `
+<material-input placeholder="Text Input" inverted>Default</material-input>
+<material-input placeholder="Text Input" inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input placeholder="Text Input" inverted outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input placeholder="Text Input" inverted disabled>Disabled</material-input>
+`.trim(),
+      roundedExample: `
+<material-input placeholder="Text Input" rounded>Default</material-input>
+<material-input placeholder="Text Input" rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input placeholder="Text Input" rounded inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input placeholder="Text Input" rounded disabled>Default</material-input>
+`.trim(),
+      labelExample: `
+<material-input label="Text Input">Default</material-input>
+<material-input label="Text Input" color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input label="Text Input" inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input label="Text Input" outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input label="Text Input" rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+<material-input label="Text Input" disabled>Disabled</material-input>
+`.trim(),
+      iconExample: `
+<material-input icon placeholder="Text Input">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input icon placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input icon inverted placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input icon outlined placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input icon rounded placeholder="Text Input" color="#ffdc7d" text-color="#f14668">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input icon placeholder="Text Input" disabled>
+    <i class="material-icons">search</i>
+</material-input>
+`.trim(),
+      handlersExample: `
+<material-input placeholder="Print changes in console" onValueChange="{console.log}"></material-input>
+<material-input icon onIconClick="{e => alert('icon clicked') }" placeholder="Click on icon" color="#ffdc7d" text-color="#f14668">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input placeholder="On Focus" onFocus="{(focus, e) => alert(\`focus: \${focus}\`)}" color="#ffdc7d" text-color="#f14668"></material-input>
+<material-input type="number" placeholder="Numbers"></material-input>
+<material-input type="email" placeholder="Email"></material-input>
+<material-input valid="{() => false}" placeholder="Custom Validation">
+    <i class="material-icons">search</i>
+</material-input>
+<material-input  placeholder="Required" required>
+    <i class="material-icons">search</i>
+</material-input>
+`.trim(),
+      alert(text) {
+        window.alert(text)
+      },
+      properties: [{
+        name: 'label',
+        type: 'string',
+        default: '',
+        description: 'Custom text for your placeholder.'
+      }, {
+        name: 'color',
+        type: 'string',
+        default: '',
+        description: 'Set a custom color for the line/outline of the input.'
+      }, {
+        name: 'text-color',
+        type: 'string',
+        default: '',
+        description: 'Set a custom color for the text of the input.'
+      }, {
+        name: 'outlined',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the input for outlined.'
+      }, {
+        name: 'inverted',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the input for inverted.'
+      }, {
+        name: 'rounded',
+        type: 'boolean',
+        default: 'false',
+        description: 'Change the style of the input for rounded.'
+      }, {
+        name: 'icon',
+        type: 'boolean',
+        default: 'false',
+        description: 'Add an incon to your input.'
+      }, {
+        name: 'type',
+        type: 'string',
+        default: '',
+        description: 'Type of the input, this is used for validation, valid types are numbers, email, tel and url.'
+      }, {
+        name: 'valid',
+        type: 'function or regex',
+        default: '',
+        description: 'The validation function for the input. When valid is a function, the argument is the current value and you chould return a boolean'
+      }, {
+        name: 'onValueChange',
+        type: 'function',
+        default: '',
+        description: 'Set a callback function for value change event on your input. The first parameter is the value and the second the Event.'
+      }, {
+        name: 'onFocus',
+        type: 'function',
+        default: '',
+        description: 'Set a callback function for focus event on your input. The first parameter is a boolean (focus value) the second the Event.'
+      }, {
+        name: 'onIconClick',
+        type: 'function',
+        default: '',
+        description: 'Set a callback function for onClick event on your icon. The first parameter is an Event.'
+      },  ]
+    }
+  </script>
+</input-page>

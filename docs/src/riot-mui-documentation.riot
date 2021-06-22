@@ -24,6 +24,9 @@
       <route path="{route('navbar')}">
         <navbar-page />
       </route>
+      <route path="{route('input')}">
+        <input-page />
+      </route>
     </router>
   </main>
   <script>
@@ -33,6 +36,7 @@
     import CheckboxPage from './pages/checkbox.riot'
     import FooterPage from './pages/footer.riot'
     import NavbarPage from './pages/navbar.riot'
+    import InputPage from './pages/input.riot'
     import {
       MaterialNavbar
     } from 'riot-mui'
@@ -49,6 +53,7 @@
         CheckboxPage,
         FooterPage,
         NavbarPage,
+        InputPage,
         Route,
         Router,
         MaterialNavbar
