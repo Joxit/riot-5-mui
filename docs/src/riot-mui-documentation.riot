@@ -43,6 +43,7 @@
     import {
       Router,
       Route,
+      router,
     } from '@riotjs/route'
 
     export default {
@@ -57,6 +58,9 @@
         Route,
         Router,
         MaterialNavbar
+      },
+      onMounted() {
+        router.on.value(() => setTimeout(() => Prism.highlightAll(), 20))
       },
       route(path) {
         return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`
