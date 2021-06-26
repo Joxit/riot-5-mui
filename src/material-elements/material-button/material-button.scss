@@ -22,6 +22,7 @@ material-button > :first-child {
   display: inline-block;
   position: relative;
   height: $material-button-height;
+  width: inherit;
   line-height: $material-button-height - 4;
   background: $material-button-background;
   color: $material-button-color;
