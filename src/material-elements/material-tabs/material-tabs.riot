@@ -1,15 +1,34 @@
 <material-tabs>
-  <material-button each="{(tab, k) in props.tabs}" onClick="{(e) => this.onTabChanged(e, k)}" class="{state.selected == k ? 'selected' : ''}" waves-opacity="{props.wavesOpacity}" waves-duration="{props.wavesDuration}" waves-center="{props.wavesCenter}" waves-color="{props.wavesColor}">
-    <div class="text" title="{tab.title}">{props.cut ? this.cut(tab.title) : tab.title}</div>
+  <material-button
+    each="{(tab, k) in props.tabs}"
+    onClick="{(e) => this.onTabChanged(e, k)}"
+    class="{state.selected == k ? 'selected' : ''}"
+    waves-opacity="{props.wavesOpacity}"
+    waves-duration="{props.wavesDuration}"
+    waves-center="{props.wavesCenter}"
+    waves-color="{props.wavesColor}"
+    color="{props.color}"
+    text-color="{props.textColor}"
+    inverted="{props.inverted}"
+  >
+    <div class="text" title="{tab.title || tab}">{props.cut ? this.cut(tab.title || tab) : tab.title || tab}</div>
   </material-button>
-  <div class="line-wrapper" if="{props.useLine}">
+  <div class="line-wrapper" if="{props.useLine}" inverted="{props.inverted}">
     <div class="line" ref="line"></div>
   </div>
-  <slot></slot>
+  <div class="content">
+    <slot></slot>
+  </div>
   <script>
+    const SUPPORTED_ATTRIBUTES = ['inverted'];
+    import MaterialButton from '../material-button/material-button.riot';
+    import { tryCall } from '../../mixins/utilities';
     export default {
       state: {
-        selected: 0
+        selected: 0,
+      },
+      components: {
+        MaterialButton,
       },
       onMounted(props, state) {
         const line = this.$('.line');
@@ -23,22 +42,20 @@
       },
       onTabChanged(e, selected) {
         this.update({
-          selected: selected
+          selected: selected,
         });
         this.setLinePosition();
-        if (typeof this.props.onTabChanged === "function") {
-          this.props.onTabChanged(this.props.tabs[selected], selected);
-        }
+        tryCall(this.props.onTabChanged, this.props.tabs[selected], selected);
       },
       setLinePosition() {
         const line = this.$('.line');
         if (line) {
-          line.style.left = (100 / this.props.tabs.length).toFixed(2) * (this.state.selected) + '%';
+          line.style.left = (100 / this.props.tabs.length).toFixed(2) * this.state.selected + '%';
         }
       },
       cut(title) {
         return title.length > props.cut ? title.substr(0, props.cut) + '...' : title;
-      }
-    }
+      },
+    };
   </script>
 </material-tabs>
