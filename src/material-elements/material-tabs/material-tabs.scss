@@ -34,12 +34,8 @@ material-tabs {
       }
     }
     &.selected > :first-child {
-      .content {
-        .text {
-          color: $material-tabs-selected-button-text-color;
-          @include vendor-prefix(transition, color 0.3s);
-        }
-      }
+      color: $material-tabs-selected-button-text-color;
+      @include vendor-prefix(transition, color 0.4s);
     }
     &[inverted='true'] > :first-child {
       color: $material-tabs-button-background;

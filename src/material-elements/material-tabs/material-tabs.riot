@@ -7,17 +7,14 @@
     waves-duration="{props.wavesDuration}"
     waves-center="{props.wavesCenter}"
     waves-color="{props.wavesColor}"
-    color="{props.color}"
-    text-color="{props.textColor}"
+    color="{state.selected != k || !props.inverted ? props.color : props.textSelectedColor}"
+    text-color="{state.selected == k && !props.inverted ? props.textSelectedColor : props.textColor}"
     inverted="{props.inverted}"
   >
     <div class="text" title="{tab.title || tab}">{props.cut ? this.cut(tab.title || tab) : tab.title || tab}</div>
   </material-button>
   <div class="line-wrapper" if="{props.useLine}" inverted="{props.inverted}">
     <div class="line" ref="line"></div>
-  </div>
-  <div class="content">
-    <slot></slot>
   </div>
   <script>
     const SUPPORTED_ATTRIBUTES = ['inverted'];
@@ -38,7 +35,21 @@
             line.style.width = node.style.width;
           }
         });
+        this.updateLineColor(props, state);
         this.setLinePosition();
+      },
+      onUpdated(props, state) {
+        this.updateLineColor(props, state);
+      },
+      updateLineColor(props, state) {
+        const lineSelectedColor = props.inverted ? props.lineColor : props.lineSelectedColor;
+        const lineColor = props.inverted ? props.lineSelectedColor : props.lineColor;
+        const line = this.$('.line');
+        const lineWrapper = this.$('.line-wrapper');
+        if (line && lineWrapper) {
+          line.style.background = lineSelectedColor;
+          lineWrapper.style.background = lineColor;
+        }
       },
       onTabChanged(e, selected) {
         this.update({
