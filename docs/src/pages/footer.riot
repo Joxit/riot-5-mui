@@ -2,7 +2,7 @@
   <h1>Material Footer</h1>
   <p>The API documentation of the Riot MUI Footer component.</p>
   <h2>Import</h2>
-  <pre><code class="language-js">import \{ MaterialFooter } from 'riot-mui';</code></pre>
+  <pre class="language-js">import { MaterialFooter } from 'riot-mui';</pre>
 
   <h2 id="simple-footer">Simple Footer</h2>
   <div class="example-container">
@@ -11,9 +11,7 @@
         <material-footer>Simple footer</material-footer>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{simpleFooter}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="mini-footer">Mini footer</h2>
@@ -29,9 +27,7 @@
         </material-footer>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{miniFooter}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="section-footer">Footer with section</h2>
@@ -70,9 +66,7 @@
         </material-footer>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{sectionFooter}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2>Props</h2>
@@ -82,78 +76,37 @@
   <props-table properties="{ classes }" kind="classes"></props-table>
 
   <script>
-    import {
-      MaterialFooter,
-      MaterialCard
-    } from 'riot-mui';
+    import { MaterialFooter, MaterialCard } from 'riot-mui';
     import PropsTable from '../components/props-table.riot';
     export default {
       components: {
         MaterialFooter,
         MaterialCard,
-        PropsTable
+        PropsTable,
       },
-      simpleFooter: `
-<material-footer>Simple footer</material-footer>
-`.trim(),
-      miniFooter: `
-  <material-footer mini="true">
-    <span class="material-footer-logo">Logo</span>
-    <ul>
-      <li><a>Link list #1</a></li>
-      <li><a>Link list #2</a></li>
-    </ul>
-  </material-footer>
-`.trim(),
-      sectionFooter: `
-  <material-footer>
-    <span class="material-footer-logo">Logo</span>
-    <div class="material-footer-sections">
-      <ul>
-        <li>
-          <h2>Header #1</h2>
-        </li>
-        <li><a>Link list #1</a></li>
-        <li><a>Link list #2</a></li>
-      </ul>
-
-      <ul>
-        <li>
-          <h2>Header #2</h2>
-        </li>
-        <li><a>Link list #3</a></li>
-        <li><a>Link list #4</a></li>
-        <li><a>Link list #5</a></li>
-      </ul>
-
-      <ul>
-        <li>
-          <h2>Header #3</h2>
-        </li>
-        <li><a>Link list #6</a></li>
-        <li><a>Link list #7</a></li>
-      </ul>
-    </div>
-    <span>content</span>
-  </material-footer>
-`.trim(),
-      properties: [ {
-        name: 'mini',
-        type: 'boolean',
-        default: 'false',
-        description: 'Use the mini footer layout.'
-      }],
-      classes: [{
-        name: 'material-footer-sections',
-        description: 'Class for section, you should add <ul> and <li> elements.'
-      }, {
-        name: 'material-footer-section-header',
-        description: 'Header for a section, you can also use h1, h2...'
-      }, {
-        name: 'material-footer-logo',
-        description: 'Style for the logo or project name.'
-      }]
-    }
+      properties: [
+        {
+          name: 'mini',
+          type: 'boolean',
+          default: 'false',
+          description: 'Use the mini footer layout.',
+        },
+      ],
+      classes: [
+        {
+          name: 'material-footer-sections',
+          description: 'Class for section, you should add <ul> and <li> elements.',
+        },
+        {
+          name: 'material-footer-section-header',
+          description: 'Header for a section, you can also use h1, h2...',
+        },
+        {
+          name: 'material-footer-logo',
+          description: 'Style for the logo or project name.',
+        },
+      ],
+    };
   </script>
   <style>
     :host .example-row,

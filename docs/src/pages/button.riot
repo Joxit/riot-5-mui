@@ -2,7 +2,7 @@
   <h1>Material Button</h1>
   <p>The API documentation of the Riot MUI Button component.</p>
   <h2>Import</h2>
-  <pre><code class="language-js">import \{ MaterialButton } from 'riot-mui';</code></pre>
+  <pre class="language-js">import { MaterialButton } from 'riot-mui';</pre>
 
   <h2 id="contained-buttons">Contained Buttons</h2>
   <div class="example-container">
@@ -13,9 +13,7 @@
         <material-button disabled>Disabled</material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{containedButtons}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="outlined-buttons">Outlined Buttons</h2>
@@ -27,9 +25,7 @@
         <material-button outlined disabled>Disabled</material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{outlinedButtons}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="inverted-buttons">Inverted Buttons</h2>
@@ -42,9 +38,7 @@
         <material-button inverted disabled>Disabled</material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{invertedButtons}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="shadow-buttons">Shadow Buttons</h2>
@@ -58,9 +52,7 @@
         <material-button shadow disabled>Disabled</material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{shadowButtons}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="rounded-buttons">Rounded Buttons</h2>
@@ -75,9 +67,7 @@
         <material-button rounded disabled>Default</material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{roundedExample}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="rounded-icon-buttons">Rounded Buttons with icon</h2>
@@ -92,9 +82,7 @@
         <material-button icon disabled><i class="icon">+</i></material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{iconExample}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="handle-click">Handle Click</h2>
@@ -103,13 +91,13 @@
       <div class="example-row">
         <material-button onClick="{ (e) => alert('clicked')}">onClick</material-button>
         <material-button href="https://joxit.dev" target="_blank">href</material-button>
-        <material-button href="https://joxit.dev" target="_blank" onClick="{ (e) => alert('clicked')}">onClick and href</material-button>
+        <material-button href="https://joxit.dev" target="_blank" onClick="{ (e) => alert('clicked')}">
+          onClick and href
+        </material-button>
         <material-button type="submit">submit</material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{handleClick}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2 id="waves-example">Waves example</h2>
@@ -117,168 +105,141 @@
     <div class="example-rendered">
       <div class="example-row">
         <material-button>Default</material-button>
-        <material-button waves-center="true" waves-opacity="1" waves-color="#485fc7" waves-duration="1500" on-wave-start="{ (e) => console.log('waves-start', e) }" on-wave-end="{ (e) => console.log('waves-end', e) }">Custom waves</material-button>
+        <material-button
+          waves-center="true"
+          waves-opacity="1"
+          waves-color="#485fc7"
+          waves-duration="1500"
+          on-wave-start="{ (e) => console.log('waves-start', e) }"
+          on-wave-end="{ (e) => console.log('waves-end', e) }"
+        >
+          Custom waves
+        </material-button>
       </div>
     </div>
-    <div class="example-code">
-      <pre><code class="language-html">{wavesExample}</code></pre>
-    </div>
+    <div class="example-code"></div>
   </div>
 
   <h2>Props</h2>
   <props-table properties="{ properties }"></props-table>
 
-
   <script>
-    import {
-      MaterialButton,
-      MaterialWaves
-    } from 'riot-mui';
+    import { MaterialButton, MaterialWaves } from 'riot-mui';
     import PropsTable from '../components/props-table.riot';
     export default {
       components: {
         MaterialButton,
         MaterialWaves,
-        PropsTable
+        PropsTable,
       },
-      containedButtons: `
-<material-button>Default</material-button>
-<material-button color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
-<material-button disabled>Disabled</material-button>
-`.trim(),
-      outlinedButtons: `
-<material-button outlined>Default</material-button>
-<material-button outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
-<material-button outlined disabled>Disabled</material-button>
-`.trim(),
-      invertedButtons: `
-<material-button inverted>Default</material-button>
-<material-button inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
-<material-button inverted outlined color="#ffdc7d" text-color="#f14668">Outlined</material-button>
-<material-button inverted disabled>Disabled</material-button>
-`.trim(),
-      shadowButtons: `
-<material-button shadow>Default</material-button>
-<material-button shadow color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
-<material-button shadow inverted color="#ffdc7d" text-color="#f14668">Inverted Color</material-button>
-<material-button shadow outlined>Outlined</material-button>
-<material-button shadow disabled>Disabled</material-button>
-`.trim(),
-      roundedExample: `
-<material-button rounded>Default</material-button>
-<material-button rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-button>
-<material-button rounded inverted color="#ffdc7d" text-color="#f14668">Inverted Color</material-button>
-<material-button rounded outlined>Outlined</material-button>
-<material-button rounded shadow>Shadow</material-button>
-<material-button rounded disabled>Disabled</material-button>
-`.trim(),
-      iconExample: `
-<material-button icon><i class="icon">+</i></material-button>
-<material-button icon color="#ffdc7d" text-color="#f14668"><i class="icon">+</i></material-button>
-<material-button icon inverted color="#ffdc7d" text-color="#f14668"><i class="icon">+</i></material-button>
-<material-button icon outlined><i class="icon">+</i></material-button>
-<material-button icon shadow><i class="icon">+</i></material-button>
-<material-button icon disabled><i class="icon">+</i></material-button>
-`.trim(),
-      handleClick: `
-<material-button onClick="{ (e) => alert('clicked')}">onClick</material-button>
-<material-button href="https://joxit.dev" target="_blank">href</material-button>
-<material-button href="https://joxit.dev" target="_blank" onClick="{ (e) => alert('clicked')}">onClick and href</material-button>
-<material-button type="submit">submit</material-button>
-`.trim(),
-      wavesExample: `
-<material-button>Default</material-button>
-<material-button waves-center="true" waves-opacity="1" waves-color="#485fc7" waves-duration="1500" on-wave-start="{ (e) => console.log('waves-start', e) }" on-wave-end="{ (e) => console.log('waves-end', e) }">Custom waves</material-button>
-`.trim(),
       alert(text) {
-        window.alert(text)
+        window.alert(text);
       },
-      properties: [{
-        name: 'color',
-        type: 'string',
-        default: '',
-        description: 'Set a custom color for the background of the button.'
-      }, {
-        name: 'text-color',
-        type: 'string',
-        default: '',
-        description: 'Set a custom color for the text of the button.'
-      }, {
-        name: 'outlined',
-        type: 'boolean',
-        default: 'false',
-        description: 'Change the style of the button for outlined.'
-      }, {
-        name: 'inverted',
-        type: 'boolean',
-        default: 'false',
-        description: 'Change the style of the button for inverted.'
-      }, {
-        name: 'shadow',
-        type: 'boolean',
-        default: 'false',
-        description: 'Add shadow effect to the button.'
-      }, {
-        name: 'rounded',
-        type: 'boolean',
-        default: 'false',
-        description: 'Change the style of the button for rounded.'
-      }, {
-        name: 'icon',
-        type: 'boolean',
-        default: 'false',
-        description: 'Change the style of the button for icon. This is like a rounded style without padding and with height = width.'
-      }, {
-        name: 'onClick',
-        type: 'function',
-        default: '',
-        description: 'Set a callback function for onClick event. The first parameter is an Event.'
-      }, {
-        name: 'href',
-        type: 'string',
-        default: '',
-        description: 'Set a link when the button is triggered. This will use the <a> tag.'
-      }, {
-        name: 'target',
-        type: 'string',
-        default: '',
-        description: 'Set a target for the link when the button is triggered.'
-      }, {
-        name: 'type',
-        type: 'string',
-        default: '',
-        description: 'Type of the button, this is used with the <button> tag.'
-      }, {
-        name: 'waves-center',
-        type: 'boolean',
-        default: 'false',
-        description: 'Set the position of the wave in the center or on the cursor position.'
-      }, {
-        name: 'waves-opacity',
-        type: 'number',
-        default: '0.6',
-        description: 'Opacity of wave effects.'
-      }, {
-        name: 'waves-color',
-        type: 'string',
-        default: '#fff',
-        description: 'Color of wave effects.'
-      }, {
-        name: 'waves-duration',
-        type: 'number',
-        default: '750',
-        description: 'Duration of wave effects in millisecond.'
-      }, {
-        name: 'on-wave-start',
-        type: 'function',
-        default: '',
-        description: 'Callback triggered on wave start. The first argument is the wave.'
-      }, {
-        name: 'on-wave-end',
-        type: 'function',
-        default: '',
-        description: 'Callback triggered on wave end.'
-      }]
-    }
+      properties: [
+        {
+          name: 'color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the background of the button.',
+        },
+        {
+          name: 'text-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the text of the button.',
+        },
+        {
+          name: 'outlined',
+          type: 'boolean',
+          default: 'false',
+          description: 'Change the style of the button for outlined.',
+        },
+        {
+          name: 'inverted',
+          type: 'boolean',
+          default: 'false',
+          description: 'Change the style of the button for inverted.',
+        },
+        {
+          name: 'shadow',
+          type: 'boolean',
+          default: 'false',
+          description: 'Add shadow effect to the button.',
+        },
+        {
+          name: 'rounded',
+          type: 'boolean',
+          default: 'false',
+          description: 'Change the style of the button for rounded.',
+        },
+        {
+          name: 'icon',
+          type: 'boolean',
+          default: 'false',
+          description:
+            'Change the style of the button for icon. This is like a rounded style without padding and with height = width.',
+        },
+        {
+          name: 'onClick',
+          type: 'function',
+          default: '',
+          description: 'Set a callback function for onClick event. The first parameter is an Event.',
+        },
+        {
+          name: 'href',
+          type: 'string',
+          default: '',
+          description: 'Set a link when the button is triggered. This will use the <a> tag.',
+        },
+        {
+          name: 'target',
+          type: 'string',
+          default: '',
+          description: 'Set a target for the link when the button is triggered.',
+        },
+        {
+          name: 'type',
+          type: 'string',
+          default: '',
+          description: 'Type of the button, this is used with the <button> tag.',
+        },
+        {
+          name: 'waves-center',
+          type: 'boolean',
+          default: 'false',
+          description: 'Set the position of the wave in the center or on the cursor position.',
+        },
+        {
+          name: 'waves-opacity',
+          type: 'number',
+          default: '0.6',
+          description: 'Opacity of wave effects.',
+        },
+        {
+          name: 'waves-color',
+          type: 'string',
+          default: '#fff',
+          description: 'Color of wave effects.',
+        },
+        {
+          name: 'waves-duration',
+          type: 'number',
+          default: '750',
+          description: 'Duration of wave effects in millisecond.',
+        },
+        {
+          name: 'on-wave-start',
+          type: 'function',
+          default: '',
+          description: 'Callback triggered on wave start. The first argument is the wave.',
+        },
+        {
+          name: 'on-wave-end',
+          type: 'function',
+          default: '',
+          description: 'Callback triggered on wave end.',
+        },
+      ],
+    };
   </script>
 </button>
