@@ -1,0 +1,78 @@
+<input-page>
+  <h1>Material Tabs</h1>
+  <p>The API documentation of the Riot MUI Tabs component.</p>
+  <h2>Import</h2>
+  <pre class="language-js">import { MaterialTabs } from 'riot-mui';</pre>
+
+  <h2 id="inputs">Default Tabs</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-tabs tabs="{ ['item one', 'item two', 'item three', 'item four'] }"></material-tabs>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2 id="outlined-inputs">Custom Colors</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-tabs
+          color="#ffdc7d"
+          text-color="#209cee"
+          line-color="#209cee"
+          text-selected-color="#f14668"
+          line-selected-color="#f14668"
+          useLine="{ true }"
+          tabs="{ ['item one', 'item two', 'item three', 'item four'] }"
+        ></material-tabs>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2 id="inverted-inputs">Inverted Inputs</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-tabs
+          useLine="{ true }"
+          tabs="{ ['item one', 'item two', 'item three', 'item four'] }"
+          inverted="true"
+        ></material-tabs>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2 id="rounded-inputs">Callback</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-tabs
+          useLine="{ true }"
+          tabs="{ ['item one', 'item two', 'item three', 'item four'] }"
+          onTabChanged="{ (tab, selected) => window.alert(`Tab selected ${tab} n°${selected}`) }"
+        ></material-tabs>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+  <style>
+    .example-row {
+      width: 100%;
+    }
+  </style>
+  <script>
+    import { MaterialTabs } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialTabs,
+        PropsTable,
+      },
+      properties: [],
+    };
+  </script>
+</input-page>
