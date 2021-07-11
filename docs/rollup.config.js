@@ -8,6 +8,7 @@ import scss from 'rollup-plugin-scss';
 import serve from 'rollup-plugin-serve';
 import fs from 'fs';
 import injectSnippet from './rollup/inject-snippet';
+import injectIds from './rollup/inject-ids';
 
 const useServe = process.env.ROLLUP_SERVE === 'true';
 const output = useServe ? '.serve' : 'build';
@@ -15,6 +16,7 @@ const output = useServe ? '.serve' : 'build';
 let plugins = [
   emptyDirectories(output),
   injectSnippet(),
+  injectIds(),
   riot(),
   nodeResolve(),
   scss({ output: `./${output}/riot-mui-documentation.css`, outputStyle: 'compressed' }),
