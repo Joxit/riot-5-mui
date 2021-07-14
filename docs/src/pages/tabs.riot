@@ -32,7 +32,7 @@
     <div class="example-code"></div>
   </div>
 
-  <h2>Inverted Inputs</h2>
+  <h2>Inverted Colors</h2>
   <div class="example-container">
     <div class="example-rendered">
       <div class="example-row">
@@ -59,6 +59,10 @@
     </div>
     <div class="example-code"></div>
   </div>
+
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
   <style>
     .example-row {
       width: 100%;
@@ -72,7 +76,56 @@
         MaterialTabs,
         PropsTable,
       },
-      properties: [],
+      properties: [
+        {
+          name: 'color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the background of the tab.',
+        },
+        {
+          name: 'text-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the text of the tab.',
+        },
+        {
+          name: 'line-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the bottom line of the tab.',
+        },
+        {
+          name: 'text-selected-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the text of the tab when selected.',
+        },
+        {
+          name: 'line-selected-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the line of the tab when selected.',
+        },
+        {
+          name: 'use-line',
+          type: 'boolean',
+          default: '',
+          description: 'Show a line under the tab.',
+        },
+        {
+          name: 'tab',
+          type: 'array',
+          default: '',
+          description: "Array with tab titles example `{ ['item one', 'item two', 'item three', 'item four'] }`.",
+        },
+        {
+          name: 'inverted',
+          type: 'boolean',
+          default: '',
+          description: "Invert color for text and background.",
+        },
+      ],
     };
   </script>
 </input-page>
