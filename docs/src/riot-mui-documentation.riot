@@ -27,6 +27,9 @@
       <route path="{route('input')}">
         <input-page />
       </route>
+      <route path="{route('tabs')}">
+        <tabs-page />
+      </route>
     </router>
   </main>
   <script>
@@ -37,6 +40,7 @@
     import FooterPage from './pages/footer.riot'
     import NavbarPage from './pages/navbar.riot'
     import InputPage from './pages/input.riot'
+    import TabsPage from './pages/tabs.riot'
     import {
       MaterialNavbar
     } from 'riot-mui'
@@ -55,12 +59,10 @@
         FooterPage,
         NavbarPage,
         InputPage,
+        TabsPage,
         Route,
         Router,
         MaterialNavbar
-      },
-      onMounted() {
-        router.on.value(() => setTimeout(() => Prism.highlightAll(), 20))
       },
       route(path) {
         return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`
