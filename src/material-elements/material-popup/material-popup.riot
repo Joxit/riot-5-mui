@@ -1,58 +1,36 @@
 <material-popup>
   <div class="container" if="{ props.opened || state.opened }">
     <div class="overlay" onclick="{ onClick }"></div>
-    <div class="popup { state.transition ? 'opening' : '' } { props.animation || 'top' }">
-      <div class="content">
-        <slot name="title"></slot>
-        <slot name="content"></slot>
-        <slot name="action"></slot>
+    <div class="popup">
+      <div class="content { state.transition ? 'opening' : '' } { props.animation || 'top' }">
+        <slot></slot>
       </div>
     </div>
   </div>
   <script>
+    import { tryCall } from '../../mixins/utilities';
     export default {
       state: {
         transition: false,
-        opened: false
+        opened: false,
       },
-      onMounted(props, state) {},
       onBeforeUpdate(props, state) {
         if (state.opened !== props.opened) {
           state.transition = true;
-          setTimeout(() => {
-            this.update({
-              opened: props.opened,
-              transition: false
-            });
-          }, props.opened ? 0 : 200)
-        }
-      },
-      onUpdated(props, state) {
-        const content = this.$('.content');
-        if (content) {
-          for (let i = 0; i < content.children.length; i++) {
-            this.updateClass(content.children[i]);
-          }
-        }
-      },
-      updateClass(node) {
-        switch (node.slot) {
-          case 'title':
-            node.classList.add('material-popup-title');
-            break;
-          case 'action':
-            node.classList.add('material-popup-action');
-            break;
-          case 'content':
-            node.classList.add('material-popup-content');
-            break;
+          setTimeout(
+            () => {
+              this.update({
+                opened: props.opened,
+                transition: false,
+              });
+            },
+            props.opened ? 0 : 200
+          );
         }
       },
       onClick(e) {
-        if (typeof this.props.onClick === 'function') {
-          this.props.onClick(e, 'overlay');
-        }
-      }
-    }
+        tryCall(this.props.onClick, e, 'overlay');
+      },
+    };
   </script>
 </material-popup>
