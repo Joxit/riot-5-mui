@@ -1,0 +1,75 @@
+<popup>
+  <h1>Material Popup</h1>
+  <p>The API documentation of the Riot MUI Popup component.</p>
+  <h2>Import</h2>
+  <pre class="language-js">import { MaterialPopup } from 'riot-mui';</pre>
+
+  <h2>Open Popup from top</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button onClick="{ () => { this.popupOnes = !this.popupOnes; this.update(); } }">
+          Open Popup
+        </material-button>
+        <material-popup opened="{this.popupOnes}" on-click="{ () => { this.popupOnes = false; this.update(); } }">
+          <div class="material-popup-title">Dialog Title</div>
+          <div class="material-popup-content">
+            Lorem ipsum dolor sit amet. Est voluptates itaque non quae neque vel accusantium magnam ut officia labore et
+            incidunt rerum. Qui quia odio ea tempore odio est ullam galisum. Qui nobis minus ad ducimus fugiat aut dolor
+            enim vel dolorum assumenda et nulla ipsa.
+          </div>
+          <div class="material-popup-action">
+            <material-button onClick="{ () => { this.popupOnes = !this.popupOnes; this.update() } }">
+              Close
+            </material-button>
+          </div>
+        </material-popup>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2>Open Popup from bottom</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button onClick="{ () => { this.popupTwo = !this.popupTwo; this.update(); } }">
+          Open Popup
+        </material-button>
+        <material-popup opened="{this.popupTwo}" on-click="{ () => { this.popupTwo = false; this.update(); } }" animation="bottom">
+          <div class="material-popup-title">Dialog Title</div>
+          <div class="material-popup-content">
+            Lorem ipsum dolor sit amet. Est voluptates itaque non quae neque vel accusantium magnam ut officia labore et
+            incidunt rerum. Qui quia odio ea tempore odio est ullam galisum. Qui nobis minus ad ducimus fugiat aut dolor
+            enim vel dolorum assumenda et nulla ipsa.
+          </div>
+          <div class="material-popup-action">
+            <material-button onClick="{ () => { this.popupTwo = !this.popupTwo; this.update() } }">
+              Close
+            </material-button>
+          </div>
+        </material-popup>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
+  <h2>Classes</h2>
+  <props-table kind="classes" properties="{ classes }"></props-table>
+
+  <script>
+    import { MaterialButton, MaterialPopup } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialButton,
+        MaterialPopup,
+        PropsTable,
+      },
+      properties: [],
+    };
+  </script>
+</popup>
