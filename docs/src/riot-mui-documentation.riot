@@ -27,6 +27,9 @@
       <route path="{route('input')}">
         <input-page />
       </route>
+      <route path="{route('popup')}">
+        <popup-page />
+      </route>
       <route path="{route('tabs')}">
         <tabs-page />
       </route>
@@ -40,6 +43,7 @@
     import FooterPage from './pages/footer.riot'
     import NavbarPage from './pages/navbar.riot'
     import InputPage from './pages/input.riot'
+    import PopupPage from './pages/popup.riot'
     import TabsPage from './pages/tabs.riot'
     import {
       MaterialNavbar
@@ -60,6 +64,7 @@
         NavbarPage,
         InputPage,
         TabsPage,
+        PopupPage,
         Route,
         Router,
         MaterialNavbar
