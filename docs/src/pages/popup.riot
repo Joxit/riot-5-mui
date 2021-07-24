@@ -36,7 +36,11 @@
         <material-button onClick="{ () => { this.popupTwo = !this.popupTwo; this.update(); } }">
           Open Popup
         </material-button>
-        <material-popup opened="{this.popupTwo}" on-click="{ () => { this.popupTwo = false; this.update(); } }" animation="bottom">
+        <material-popup
+          opened="{this.popupTwo}"
+          on-click="{ () => { this.popupTwo = false; this.update(); } }"
+          animation="bottom"
+        >
           <div class="material-popup-title">Dialog Title</div>
           <div class="material-popup-content">
             Lorem ipsum dolor sit amet. Est voluptates itaque non quae neque vel accusantium magnam ut officia labore et
@@ -69,7 +73,28 @@
         MaterialPopup,
         PropsTable,
       },
-      properties: [],
+      properties: [
+        {
+          name: 'onClick',
+          type: 'function',
+          default: '',
+          description: 'Set a callback function for onClick event on overlay. The first parameter is an Event and second is overlay.',
+        },
+      ],
+      classes: [
+        {
+          name: 'material-popup-title',
+          description: 'Class for popup title.',
+        },
+        {
+          name: 'material-popup-content',
+          description: 'Class for popup content.',
+        },
+        {
+          name: 'material-popup-action',
+          description: 'Class for popup action buttons.',
+        },
+      ],
     };
   </script>
 </popup>
