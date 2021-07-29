@@ -2,57 +2,51 @@
   <header>
     <material-navbar>
       <span class="logo">Riot Material UI Documentation</span>
-    </material-navbar>  
+    </material-navbar>
   </header>
   <main>
     <router base="#!">
       <route path="{route('')}">
-        <home-page />
+        <home-page></home-page>
       </route>
       <route path="{route('button')}">
-        <button-page />
+        <button-page></button-page>
       </route>
       <route path="{route('card')}">
-        <card-page />
+        <card-page></card-page>
       </route>
       <route path="{route('checkbox')}">
-        <checkbox-page />
+        <checkbox-page></checkbox-page>
       </route>
       <route path="{route('footer')}">
-        <footer-page />
+        <footer-page></footer-page>
       </route>
       <route path="{route('navbar')}">
-        <navbar-page />
+        <navbar-page></navbar-page>
       </route>
       <route path="{route('input')}">
-        <input-page />
+        <input-page></input-page>
       </route>
       <route path="{route('popup')}">
-        <popup-page />
+        <popup-page></popup-page>
       </route>
       <route path="{route('tabs')}">
-        <tabs-page />
+        <tabs-page></tabs-page>
       </route>
     </router>
   </main>
   <script>
-    import HomePage from './pages/home.riot'
-    import ButtonPage from './pages/button.riot'
-    import CardPage from './pages/card.riot'
-    import CheckboxPage from './pages/checkbox.riot'
-    import FooterPage from './pages/footer.riot'
-    import NavbarPage from './pages/navbar.riot'
-    import InputPage from './pages/input.riot'
-    import PopupPage from './pages/popup.riot'
-    import TabsPage from './pages/tabs.riot'
-    import {
-      MaterialNavbar
-    } from 'riot-mui'
-    import {
-      Router,
-      Route,
-      router,
-    } from '@riotjs/route'
+    import HomePage from './pages/home.riot';
+    import ButtonPage from './pages/button.riot';
+    import CardPage from './pages/card.riot';
+    import CheckboxPage from './pages/checkbox.riot';
+    import FooterPage from './pages/footer.riot';
+    import NavbarPage from './pages/navbar.riot';
+    import InputPage from './pages/input.riot';
+    import PopupPage from './pages/popup.riot';
+    import TabsPage from './pages/tabs.riot';
+    import { MaterialNavbar } from 'riot-mui';
+    import { Router, Route, router } from '@riotjs/route';
 
     export default {
       components: {
@@ -67,12 +61,12 @@
         PopupPage,
         Route,
         Router,
-        MaterialNavbar
+        MaterialNavbar,
       },
       route(path) {
-        return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`
-      }
-    }
+        return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`;
+      },
+    };
   </script>
   <style>
     :host,
@@ -80,7 +74,7 @@
       color: rgba(0, 0, 0, 0.87);
       margin: 0;
       font-size: 0.875rem;
-      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
       font-weight: 400;
       line-height: 1.43;
       letter-spacing: 0.01071em;
@@ -91,14 +85,14 @@
       flex-direction: row;
       justify-content: center;
     }
-    :host .example-rendered .example-row>*:not(material-navbar) {
+    :host .example-rendered .example-row > *:not(material-navbar) {
       margin: 0.5em 1em;
       display: inline-block;
     }
-    :host .example-rendered .example-row>*:first-child {
+    :host .example-rendered .example-row > *:first-child {
       margin-left: 0;
     }
-    :host .example-rendered .example-row>*:last-child {
+    :host .example-rendered .example-row > *:last-child {
       margin-right: 0;
     }
     :host main {
