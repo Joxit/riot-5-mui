@@ -68,7 +68,12 @@
         Router,
         MaterialNavbar,
       },
-      pages: ['button', 'card', 'checkbox', 'footer', 'input', 'navbar', 'popup', 'tabs'],
+      onBeforeMount(props, stats) {
+        this.pages = Object.keys(this.components)
+          .filter((k) => k.endsWith('Page') && k !== 'HomePage')
+          .map((k) => k.replace('Page', '').toLowerCase())
+          .sort();
+      },
       route(path) {
         return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`;
       },
