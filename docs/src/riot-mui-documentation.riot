@@ -4,37 +4,42 @@
       <span class="logo">Riot Material UI Documentation</span>
     </material-navbar>
   </header>
-  <main>
-    <router base="#!">
-      <route path="{route('')}">
-        <home-page></home-page>
-      </route>
-      <route path="{route('button')}">
-        <button-page></button-page>
-      </route>
-      <route path="{route('card')}">
-        <card-page></card-page>
-      </route>
-      <route path="{route('checkbox')}">
-        <checkbox-page></checkbox-page>
-      </route>
-      <route path="{route('footer')}">
-        <footer-page></footer-page>
-      </route>
-      <route path="{route('navbar')}">
-        <navbar-page></navbar-page>
-      </route>
-      <route path="{route('input')}">
-        <input-page></input-page>
-      </route>
-      <route path="{route('popup')}">
-        <popup-page></popup-page>
-      </route>
-      <route path="{route('tabs')}">
-        <tabs-page></tabs-page>
-      </route>
-    </router>
-  </main>
+  <section>
+    <nav>
+      <a each="{ page in pages }" href="#!{page}"> {page} </a>
+    </nav>
+    <main>
+      <router base="#!">
+        <route path="{route('')}">
+          <home-page></home-page>
+        </route>
+        <route path="{route('button')}">
+          <button-page></button-page>
+        </route>
+        <route path="{route('card')}">
+          <card-page></card-page>
+        </route>
+        <route path="{route('checkbox')}">
+          <checkbox-page></checkbox-page>
+        </route>
+        <route path="{route('footer')}">
+          <footer-page></footer-page>
+        </route>
+        <route path="{route('navbar')}">
+          <navbar-page></navbar-page>
+        </route>
+        <route path="{route('input')}">
+          <input-page></input-page>
+        </route>
+        <route path="{route('popup')}">
+          <popup-page></popup-page>
+        </route>
+        <route path="{route('tabs')}">
+          <tabs-page></tabs-page>
+        </route>
+      </router>
+    </main>
+  </section>
   <script>
     import HomePage from './pages/home.riot';
     import ButtonPage from './pages/button.riot';
@@ -63,6 +68,7 @@
         Router,
         MaterialNavbar,
       },
+      pages: ['button', 'card', 'checkbox', 'footer', 'input', 'navbar', 'popup', 'tabs'],
       route(path) {
         return `([^#]*?)/(\\?[^#]*?)?(#!)?(/?)${path}`;
       },
@@ -97,6 +103,26 @@
     }
     :host main {
       padding: 0 2em;
+      max-width: calc(100% - 200px);
+    }
+    :host section {
+      display: flex;
+      flex-direction: row;
+    }
+    :host nav {
+      display: flex;
+      flex-direction: column;
+      min-width: 100px;
+      max-width: 200px;
+    }
+    :host nav > a {
+      padding: 6px 2em;
+      font-size: 1rem;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.87);
+    }
+    :host nav > a::first-letter {
+      text-transform: capitalize;
     }
   </style>
 </riot-mui-documentation>
