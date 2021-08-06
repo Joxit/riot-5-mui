@@ -13,20 +13,20 @@ $material-snackbar-toast-width: 320px;
 }
 
 material-snackbar {
-  display:block;
+  display: block;
   position: fixed;
   bottom: 10%;
   right: 7%;
   z-index: 1001;
   .toast {
-    @include vendor-prefix(border-radius,3px);
+    @include vendor-prefix(border-radius, 3px);
     top: 0;
     width: auto;
     clear: both;
     margin-top: 10px;
     position: relative;
-   // max-width: $material-snackbar-toast-width;
-   // min-width: $material-snackbar-toast-width;
+    // max-width: $material-snackbar-toast-width;
+    // min-width: $material-snackbar-toast-width;
     height: $material-snackbar-toast-height;
     line-height: $material-snackbar-toast-height;
     background-color: $material-snackbar-toast-color;
@@ -36,7 +36,7 @@ material-snackbar {
     //text-align: center;
     color: $material-snackbar-toast-text-color;
     z-index: 1001;
-    @include vendor-prefix(box-shadow,'0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)');
+    @include vendor-prefix(box-shadow, '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)');
     // Flex
     display: -webkit-box;
     display: -moz-box;
@@ -49,15 +49,15 @@ material-snackbar {
     -webkit-align-items: center;
     align-items: center;
     //
-    @include vendor-prefix(justify-content,space-between);
+    @include vendor-prefix(justify-content, space-between);
     // Animation
-    transform:translateY(0px);
+    transform: translateY(0px);
     opacity: 1;
-    @include vendor-prefix(transition,'transform .2s ease-in,opacity .2s');
+    @include vendor-prefix(transition, 'transform .2s ease-in,opacity .2s');
     &.opening {
-      transform:translateY(-$material-snackbar-toast-offset);
+      transform: translateY(-$material-snackbar-toast-offset);
       opacity: 0;
-      @include vendor-prefix(transition,'transform .2s cubic-bezier(0.23, 1, 0.32, 1),opacity .2s');
+      @include vendor-prefix(transition, 'transform .2s cubic-bezier(0.23, 1, 0.32, 1),opacity .2s');
     }
     // Colors
     &.error {

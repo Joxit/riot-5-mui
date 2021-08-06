@@ -1,18 +1,25 @@
 <material-snackbar>
-  <div class="toast { state.toasts[toastID].isError ? 'error' : '' } { state.toasts[toastID].opening ? 'opening' : '' }" onclick="{ removeToastByClick(toastID) }" each="{ toastID in Object.keys(state.toasts) }">
+  <div
+    class="toast { state.toasts[toastID].isError ? 'error' : '' } { state.toasts[toastID].opening ? 'opening' : '' }"
+    onclick="{ removeToastByClick(toastID) }"
+    each="{ toastID in Object.keys(state.toasts) }"
+  >
     { state.toasts[toastID].message }
   </div>
   <script>
     export default {
       state: {
-        toasts: {}
+        toasts: {},
       },
       onBeforeUpdate(props, state) {
         if (props.message && !state.internal) {
-          this.addToast({
-            message: props.message,
-            isError: props.isError
-          }, props.duration)
+          this.addToast(
+            {
+              message: props.message,
+              isError: props.isError,
+            },
+            props.duration
+          );
         }
         state.internal = false;
       },
@@ -22,16 +29,16 @@
        */
       addToast(toast, duration) {
         // Generate uniqe ID
-        var toastID = this.toastID = Math.random().toString(36).substring(7);
+        var toastID = (this.toastID = Math.random().toString(36).substring(7));
         // Create new toast and open it
         this.state.toasts[toastID] = Object.assign(toast, {
-          opening: true
+          opening: true,
         });
         setTimeout(() => {
           this.state.toasts[toastID].opening = false;
           this.update({
             toasts: this.state.toasts,
-            internal: true
+            internal: true,
           });
         }, 50);
         // Close after ending of duration time
@@ -43,7 +50,7 @@
         return () => {
           clearInterval(this.state.toasts[toastID].interval);
           this.removeToast(toastID);
-        }
+        };
       },
       /**
        * Remove toast from snackbar
@@ -55,18 +62,18 @@
           this.state.toasts[toastID].opening = true;
           this.update({
             toasts: this.state.toasts,
-            internal: true
+            internal: true,
           });
           // Wait a some time animation will end
           setTimeout(() => {
             delete this.state.toasts[toastID];
             this.update({
               toasts: this.state.toasts,
-              internal: true
+              internal: true,
             });
           }, 200);
         }
-      }
-    }
+      },
+    };
   </script>
 </material-snackbar>
