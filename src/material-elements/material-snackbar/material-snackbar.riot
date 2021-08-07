@@ -3,6 +3,7 @@
     class="toast { state.toasts[toastID].isError ? 'error' : '' } { state.toasts[toastID].opening ? 'opening' : '' }"
     onclick="{ removeToastByClick(toastID) }"
     each="{ toastID in Object.keys(state.toasts) }"
+    style="{ generateStyle(state.toasts[toastID]) }"
   >
     { state.toasts[toastID].message }
   </div>
@@ -17,11 +18,23 @@
             {
               message: props.message,
               isError: props.isError,
+              color: props.color,
+              textColor: props.textColor,
             },
             props.duration
           );
         }
         state.internal = false;
+      },
+      generateStyle(toast) {
+        let style = '';
+        if (toast.textColor) {
+          style += `color: ${toast.textColor};`;
+        }
+        if (toast.color) {
+          style += `background-color: ${toast.color};`;
+        }
+        return style;
       },
       /**
        * Add new toast in collection
