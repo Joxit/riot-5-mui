@@ -1,0 +1,113 @@
+<snackbar>
+  <h1>Material Snackbar</h1>
+  <p>The API documentation of the Riot MUI Snackbar component.</p>
+  <h2>Import</h2>
+  <pre class="language-js">import { MaterialSnackbar } from 'riot-mui';</pre>
+
+  <h2>Trigger Snackbar</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-button
+          onClick="{
+    () => {
+      this.message = 'Snackbar n°' + ++nCalls;
+      this.isError = false;
+      this.color = '';
+      this.textColor = '';
+      this.duration = null;
+      this.update();
+    }
+  }"
+        >
+          Open Snackbar
+        </material-button>
+        <material-button
+          onClick="{
+    () => {
+      this.message = 'Snackbar n°' + ++nCalls;
+      this.isError = true;
+      this.color = '';
+      this.textColor = '';
+      this.duration = null;
+      this.update();
+    }
+  }"
+        >
+          Open Error Snackbar
+        </material-button>
+        <material-button
+          onClick="{
+    () => {
+      this.message = 'Snackbar n°' + ++nCalls;
+      this.isError = false;
+      this.color = '#ffdc7d';
+      this.textColor = '#f14668';
+      this.duration = 10000;
+      this.update();
+    }
+  }"
+        >
+          Open Custom Color Snackbar
+        </material-button>
+        <material-snackbar
+          message="{ this.message }"
+          is-error="{ this.isError }"
+          color="{ this.color }"
+          text-color="{ this.textColor }"
+          duration="{ this.duration }"
+        ></material-snackbar>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
+  <script>
+    import { MaterialButton, MaterialSnackbar } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      nCalls: 0,
+      components: {
+        MaterialButton,
+        MaterialSnackbar,
+        PropsTable,
+      },
+      properties: [
+        {
+          name: 'message',
+          type: 'string',
+          default: '',
+          description: 'Set the message to show in the snackbar.',
+        },
+        {
+          name: 'is-error',
+          type: 'boolean',
+          default: '',
+          description: 'Set the message to show in the snackbar.',
+        },
+        {
+          name: 'color',
+          type: 'string',
+          default: '',
+          description: 'Set custom background color for the snackbar.',
+        },
+        {
+          name: 'text-color',
+          type: 'string',
+          default: '',
+          description: 'Set custom text color for the snackbar.',
+        },
+        {
+          name: 'duration',
+          type: 'integer',
+          default: '5000',
+          description: 'Change the snackbar duration.',
+        },
+      ],
+      classes: [],
+    };
+  </script>
+</snackbar>

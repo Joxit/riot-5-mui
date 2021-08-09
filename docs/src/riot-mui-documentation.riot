@@ -40,6 +40,9 @@
         <route path="{route('spinner')}">
           <spinner-page></spinner-page>
         </route>
+        <route path="{route('snackbar')}">
+          <snackbar-page></snackbar-page>
+        </route>
       </router>
     </main>
   </section>
@@ -54,6 +57,7 @@
     import PopupPage from './pages/popup.riot';
     import TabsPage from './pages/tabs.riot';
     import SpinnerPage from './pages/spinner.riot';
+    import SnackbarPage from './pages/snackbar.riot';
     import { MaterialNavbar } from 'riot-mui';
     import { Router, Route, router } from '@riotjs/route';
 
@@ -69,6 +73,7 @@
         TabsPage,
         PopupPage,
         SpinnerPage,
+        SnackbarPage,
         Route,
         Router,
         MaterialNavbar,
