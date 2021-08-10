@@ -11,7 +11,6 @@ import '../../src/material-elements/material-dropdown-list/material-dropdown-lis
 import '../../src/material-elements/material-footer/material-footer.scss';
 import '../../src/material-elements/material-input/material-input.scss';
 import '../../src/material-elements/material-navbar/material-navbar.scss';
-import '../../src/material-elements/material-pane/material-pane.scss';
 import '../../src/material-elements/material-popup/material-popup.scss';
 import '../../src/material-elements/material-snackbar/material-snackbar.scss';
 import '../../src/material-elements/material-spinner/material-spinner.scss';
