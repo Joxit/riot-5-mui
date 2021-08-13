@@ -18,7 +18,6 @@ import './material-elements/material-popup/material-popup.scss';
 import './material-elements/material-snackbar/material-snackbar.scss';
 import './material-elements/material-spinner/material-spinner.scss';
 import './material-elements/material-tabs/material-tabs.scss';
-import './material-elements/material-textarea/material-textarea.scss';
 import './material-elements/material-waves/material-waves.scss';
 
 register('material-button', mui.MaterialButton);

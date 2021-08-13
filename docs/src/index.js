@@ -15,7 +15,6 @@ import '../../src/material-elements/material-popup/material-popup.scss';
 import '../../src/material-elements/material-snackbar/material-snackbar.scss';
 import '../../src/material-elements/material-spinner/material-spinner.scss';
 import '../../src/material-elements/material-tabs/material-tabs.scss';
-import '../../src/material-elements/material-textarea/material-textarea.scss';
 import '../../src/material-elements/material-waves/material-waves.scss';
 
 const createApp = component(Documentation);

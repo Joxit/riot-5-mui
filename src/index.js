@@ -11,7 +11,6 @@ import MaterialPopup from './material-elements/material-popup/material-popup.rio
 import MaterialSnackbar from './material-elements/material-snackbar/material-snackbar.riot';
 import MaterialSpinner from './material-elements/material-spinner/material-spinner.riot';
 import MaterialTabs from './material-elements/material-tabs/material-tabs.riot';
-// import MaterialTextArea from './material-elements/material-textarea/material-textarea.riot';
 import MaterialWaves from './material-elements/material-waves/material-waves.riot';
 
 export { MaterialButton };
@@ -27,5 +26,4 @@ export { MaterialPopup };
 export { MaterialSnackbar };
 export { MaterialSpinner };
 export { MaterialTabs };
-// export { MaterialTextArea };
 export { MaterialWaves };
