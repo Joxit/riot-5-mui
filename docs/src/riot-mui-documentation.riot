@@ -91,7 +91,7 @@
   </script>
   <style>
     :host,
-    :host button {
+    button {
       color: rgba(0, 0, 0, 0.87);
       margin: 0;
       font-size: 0.875rem;
@@ -101,43 +101,43 @@
       letter-spacing: 0.01071em;
       background-color: #fff;
     }
-    :host .example-rendered {
+    .example-rendered {
       display: flex;
       flex-direction: row;
       justify-content: center;
     }
-    :host .example-rendered .example-row > *:not(material-navbar) {
+    .example-rendered .example-row > *:not(material-navbar) {
       margin: 0.5em 1em;
       display: inline-block;
     }
-    :host .example-rendered .example-row > *:first-child {
+    .example-rendered .example-row > *:first-child {
       margin-left: 0;
     }
-    :host .example-rendered .example-row > *:last-child {
+    .example-rendered .example-row > *:last-child {
       margin-right: 0;
     }
-    :host main {
+    main {
       padding: 0 2em;
       width: 100%;
       max-width: calc(100% - 200px);
     }
-    :host section {
+    section {
       display: flex;
       flex-direction: row;
     }
-    :host nav {
+    nav {
       display: flex;
       flex-direction: column;
       min-width: 100px;
       max-width: 200px;
     }
-    :host nav > a {
+    nav > a {
       padding: 6px 2em;
       font-size: 1rem;
       text-decoration: none;
       color: rgba(0, 0, 0, 0.87);
     }
-    :host nav > a::first-letter {
+    nav > a::first-letter {
       text-transform: capitalize;
     }
   </style>

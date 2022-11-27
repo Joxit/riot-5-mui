@@ -16,7 +16,7 @@ const output = useServe ? '.serve' : 'build';
 const plugins = [
   riot(),
   nodeResolve(),
-  scss({ output: `./${output}/styles/riot-mui.min.css`, outputStyle: 'compressed' }),
+  scss({ fileName: `riot-mui.min.css`, outputStyle: 'compressed' }),
   commonjs(),
   babel({ babelHelpers: 'bundled', presets: ['@babel/env'] }),
 ];

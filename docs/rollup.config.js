@@ -7,8 +7,8 @@ import { babel } from '@rollup/plugin-babel';
 import scss from 'rollup-plugin-scss';
 import serve from 'rollup-plugin-serve';
 import fs from 'fs';
-import injectSnippet from './rollup/inject-snippet';
-import injectIds from './rollup/inject-ids';
+import injectSnippet from './rollup/inject-snippet.js';
+import injectIds from './rollup/inject-ids.js';
 
 const useServe = process.env.ROLLUP_SERVE === 'true';
 const output = useServe ? '.serve' : 'build';
@@ -19,7 +19,7 @@ let plugins = [
   injectIds(),
   riot(),
   nodeResolve(),
-  scss({ output: `./${output}/riot-mui-documentation.css`, outputStyle: 'compressed' }),
+  scss({ fileName: `riot-mui-documentation.css`, outputStyle: 'compressed' }),
   commonjs(),
   babel({ babelHelpers: 'bundled', presets: [['@babel/env', { useBuiltIns: 'usage', corejs: { version: '2' } }]] }),
 ];
