@@ -19,12 +19,7 @@ material-input {
   display: block;
   padding: 8px 0;
   position: relative;
-  /** LABEL PLACEHOLDER **/
-  // It was be created only for prevent a label overflowing
-  .label-placeholder {
-    height: 15px;
-    width: 100%;
-  }
+  margin: 0.5em;
   .input-content {
     font-size: $material-input-font-size;
     position: relative;

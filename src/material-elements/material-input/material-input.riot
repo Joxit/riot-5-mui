@@ -1,15 +1,34 @@
 <material-input>
-  <div class="label-placeholder"></div>
   <div class="input-content {state.value ? 'not-empty' : null } { state.error ? 'error': null }">
     <label for="input" if="{props.label}">{props.label}</label>
-    <input type="{props.type||'text'}" disabled="{attributeToBool(props.disabled)}" placeholder="{props.placeholder}" onkeyup="{changeValue}" value="{state.value}" autocomplete="off" required="{attributeToBool(props.required)}" />
+    <input
+      type="{props.type||'text'}"
+      disabled="{attributeToBool(props.disabled)}"
+      placeholder="{props.placeholder}"
+      onkeyup="{changeValue}"
+      value="{state.value}"
+      autocomplete="off"
+      required="{attributeToBool(props.required)}"
+    />
     <div class="iconWrapper" if="{attributeToBool(props.icon)}">
-      <material-button color="rgba(0,0,0,0)" center="true" waves-center="true" waves-color="{props['waves-color']||'#fff'}" icon="true" onclick="{iconClickHandler}" waves-opacity="{props['waves-opacity']||'0.6'}" waves-duration="{props['waves-duration']||'600'}">
-        <slot />
+      <material-button
+        color="rgba(0,0,0,0)"
+        center="true"
+        waves-center="true"
+        waves-color="{props['waves-color']||'#fff'}"
+        icon="true"
+        onclick="{iconClickHandler}"
+        waves-opacity="{props['waves-opacity']||'0.6'}"
+        waves-duration="{props['waves-duration']||'600'}"
+      >
+        <slot></slot>
       </material-button>
     </div>
   </div>
-  <div if="{!attributeToBool(props.outlined) && !attributeToBool(props.rounded)}" class="underline {state.focused ? 'focused' : null} {state.error ? 'error' : null}">
+  <div
+    if="{!attributeToBool(props.outlined) && !attributeToBool(props.rounded)}"
+    class="underline {state.focused ? 'focused' : null} {state.error ? 'error' : null}"
+  >
     <div class="unfocused-line"></div>
     <div class="focused-line"></div>
   </div>
@@ -18,12 +37,7 @@
     import Validate from '../../mixins/validate';
     const SUPPORTED_ATTRIBUTES = ['disabled', 'rounded', 'outlined', 'inverted', 'icon'];
     import MaterialButton from '../material-button/material-button.riot';
-    import {
-      attributeToBool,
-      tryCall,
-      HTML,
-      attributesObj
-    } from '../../mixins/utilities';
+    import { attributeToBool, tryCall, HTML, attributesObj } from '../../mixins/utilities';
     export default {
       state: {
         focused: false,
@@ -34,18 +48,19 @@
         error: false,
       },
       components: {
-        MaterialButton
+        MaterialButton,
       },
       onMounted(props, state) {
-        this.required = "";
+        this.required = '';
         // Not supported types
         this.notSupportedTypes = ['date', 'color', 'datetime', 'month', 'range', 'time'];
-        if (this.notSupportedTypes.indexOf(this.props.type) != -1) throw new Error(`Sorry but we do not support ${this.props.type} type yet!`);
+        if (this.notSupportedTypes.indexOf(this.props.type) != -1)
+          throw new Error(`Sorry but we do not support ${this.props.type} type yet!`);
         this.validator = new Validate(this.props);
         // Attributes
         this.update({
           showIcon: false,
-          value: this.props.value || ''
+          value: this.props.value || '',
         });
 
         this.$('input').addEventListener('focus', this.changeFocus);
@@ -54,19 +69,21 @@
       },
       onBeforeUpdate(props, states) {
         this.state.value = this.$('input').value;
-        this.state.error = (states.value.length !== 0 && !this.validator.validate(states.value)) || (states.value.length === 0 && attributeToBool(props.required))
+        this.state.error =
+          (states.value.length !== 0 && !this.validator.validate(states.value)) ||
+          (states.value.length === 0 && attributeToBool(props.required));
       },
       onUpdated(props, state) {
         this.updateAttributes(props, state);
       },
       updateAttributes(props, state) {
-        const attributes = attributesObj(SUPPORTED_ATTRIBUTES, props)
+        const attributes = attributesObj(SUPPORTED_ATTRIBUTES, props);
         const color = attributes.inverted ? props.textColor : props.color;
         const textColor = attributes.inverted ? props.color : props.textColor;
 
-        HTML.children(this.$('.underline')).forEach(e => e.style.background = color);
+        HTML.children(this.$('.underline')).forEach((e) => (e.style.background = color));
         this.$('input').style.color = textColor;
-        this.$('label') && (this.$('label').style.color = textColor);
+        this.$('label') && (this.$('label').style.color = props.labelColor || textColor);
 
         if (attributes.outlined || attributes.rounded) {
           this.$('.input-content').style['border-color'] = color;
@@ -75,22 +92,22 @@
       changeFocus(e) {
         if (attributeToBool(this.props.disabled)) return false;
         const focused = this.$('input') == document.activeElement;
-        if (this.state.focused == focused) return
+        if (this.state.focused == focused) return;
         this.update({
-          focused
+          focused,
         });
         tryCall(this.props.onFocus, focused, e);
       },
       changeValue(e) {
         this.update({
-          value: this.$('input').value
+          value: this.$('input').value,
         });
         tryCall(this.props.onValueChange, this.$('input').value, e);
       },
       iconClickHandler(e) {
         tryCall.call(this, this.props.onIconClick, e);
       },
-      attributeToBool
-    }
+      attributeToBool,
+    };
   </script>
 </material-input>
