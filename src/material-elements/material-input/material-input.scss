@@ -1,4 +1,4 @@
-$material-input-font-size: 16px;
+$material-input-font-size: 1em;
 $material-input-underline-unfocused-background: #2f6975;
 $material-input-underline-disabled-background: #ccc;
 $material-input-error-underline-background: #941212;
@@ -62,6 +62,7 @@ material-input {
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       font-weight: 400;
+      font-size: $material-input-font-size;
       line-height: $material-input-height;
       height: $material-input-height;
       color: $material-input-color;
