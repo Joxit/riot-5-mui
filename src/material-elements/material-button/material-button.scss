@@ -1,5 +1,5 @@
 // Basic vars to quick styling
-$material-button-height: 40px;
+$material-button-height: 2em;
 $material-button-background: #61bdcc;
 $material-button-disabled-background: #ccc;
 $material-button-color: #fff;
@@ -21,9 +21,9 @@ material-button > :first-child {
   border-radius: 2px;
   display: inline-block;
   position: relative;
-  height: $material-button-height;
   width: inherit;
-  line-height: $material-button-height - 4;
+  min-height: $material-button-height;
+  font-size: $material-button-font-size;
   background: $material-button-background;
   color: $material-button-color;
   padding: $material-button-padding;
@@ -46,19 +46,14 @@ material-button > :first-child {
   }
   /** CONTENT **/
   .content {
-    width: 101%;
-    height: 100%;
     display: block;
     text-align: center;
-    .text,
     i.material-icons,
     i.icon,
     a {
       display: inline-block;
       vertical-align: middle;
-      font-size: $material-button-font-size;
       color: inherit;
-      line-height: $material-button-height;
       &.material-icons {
         font-size: $material-button-icon-size;
       }
@@ -73,17 +68,13 @@ material-button > :first-child {
   &[rounded='true'], &[icon='true'] {
     border-radius: 50vw;
     .content {
-      width: 100%;
-      height: 100%;
       display: flex;
       align-items: center;
       text-align: center;
       i.material-icons,
       i.icon {
+        margin: auto;
         display: inline-block;
-        text-align: center;
-        width: $material-button-height;
-        height: $material-button-height;
         @include vendor-prefix(user-select, 'none');
       }
     }
@@ -93,6 +84,10 @@ material-button > :first-child {
   }
   &[icon='true'] {
     padding: 0;
+    .content {
+      width: $material-button-height;
+      height: $material-button-height;
+    }
   }
 
   &[shadow='true'] {
@@ -122,7 +117,7 @@ material-button > :first-child {
     background: $material-button-disabled-background;
     color: darken($material-button-disabled-background, 20);
     cursor: default;
-    #content {
+    .content {
       .text,
       i.material-icons,
       i.icon,
