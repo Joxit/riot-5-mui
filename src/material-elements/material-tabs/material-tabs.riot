@@ -23,18 +23,24 @@
     export default {
       state: {
         selected: 0,
+        widths: {},
       },
       components: {
         MaterialButton,
       },
       onMounted(props, state) {
         const line = this.$('.line');
-        this.$$('material-button').forEach((node) => {
-          node.style.width = (100 / this.props.tabs.length).toFixed(2) + '%';
-          if (line) {
-            line.style.width = node.style.width;
+        const nodes = this.$$('material-button');
+        const width = parseFloat((100 / this.props.tabs.length).toFixed(2));
+        nodes.forEach((node, idx) => {
+          if (idx == nodes.length - 1 && width * nodes.length !== 100) {
+            state.widths[idx] = width + (100 - width * nodes.length);
+          } else {
+            state.widths[idx] = width;
           }
+          node.style.width = `${state.widths[idx]}%`;
         });
+        this.setLinePosition();
         this.updateLineColor(props, state);
         this.setLinePosition();
       },
@@ -62,6 +68,7 @@
         const line = this.$('.line');
         if (line) {
           line.style.left = (100 / this.props.tabs.length).toFixed(2) * this.state.selected + '%';
+          line.style.width = `${this.state.widths[this.state.selected]}%`;
         }
       },
       cut(title) {
