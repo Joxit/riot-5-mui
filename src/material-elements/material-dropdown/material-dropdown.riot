@@ -1,55 +1,42 @@
 <material-dropdown>
-  <div class="dropdown {state.opening ? 'opening' : false } {props.animation || 'top'}" if="{state.opened}">
-    <slot />
+  <div
+    class="material-dropdown-container { state.transition ? 'opening' : false } { props.animation || 'top' }"
+    if="{ props.opened || state.opened }"
+  >
+    <slot></slot>
   </div>
   <script>
+    import { tryCall } from '../../mixins/utilities';
     export default {
       state: {
-        opening: false,
-        opened: false
+        transition: false,
+        opened: false,
       },
-      onMounted() {
-        // Basics
-        this.state.opened = this.props.opened || false;
-        if (typeof this.props.openFn === 'function') this.props.openFn(this.open)
-        if (typeof this.props.closeFn === 'function') this.props.closeFn(this.close)
-        if (typeof this.props.toggleFn === 'function') this.props.toggleFn(this.toggle)
-        if (typeof this.props.isOpenFn === 'function') this.props.isOpenFn(this.isOpen)
-      },
-      isOpen() {
-        return this.state.opened;
-      },
-      toggle() {
-        if (this.state.opened) {
-          this.close();
-        } else {
-          this.open();
+      onBeforeUpdate(props, state) {
+        if (state.opened !== props.opened) {
+          state.transition = true;
+          setTimeout(
+            () =>
+              this.update({
+                opened: props.opened,
+                transition: false,
+              }),
+            props.opened ? 0 : 200
+          );
         }
       },
-      open() {
-        if (this.state.opening) return;
-        this.update({
-          opened: true,
-          opening: true
-        });
-        setTimeout(() => {
-          this.update({
-            opening: false
+      onUpdated(props, state) {
+        if (props.onClick) {
+          this.$$('.material-dropdown-item').forEach((elt, idx) => {
+            elt.onclick = (event) => {
+              const item = elt.attributes.getNamedItem('item');
+              event.target.item = item && item.value;
+              event.target.index = idx;
+              tryCall(this.props.onClick, event);
+            };
           });
-        }, 0);
+        }
       },
-      close() {
-        if (this.state.opening) return;
-        this.update({
-          opening: true
-        });
-        setTimeout(() => {
-          this.update({
-            opened: false,
-            opening: false
-          });
-        }, 200)
-      }
-    }
+    };
   </script>
 </material-dropdown>
