@@ -3,7 +3,27 @@
     class="material-dropdown-container { state.transition ? 'opening' : false } { props.animation || 'top' }"
     if="{ props.opened || state.opened }"
   >
-    <slot></slot>
+    <template if="{ !props.items }">
+      <slot></slot>
+    </template>
+    <template each="{ (item, key) in props.items }">
+      <span
+        if="{ !item.href }"
+        class="material-dropdown-item { props.selected === key ? 'selected' : '' }"
+        item="{ item.name || item.title }"
+      >
+        { item.title }
+      </span>
+      <a
+        if="{ item.href }"
+        href="{ item.href }"
+        class="material-dropdown-item { props.selected === key ? 'selected' : '' }"
+        item="{ item.name || item.title }"
+        title="{ item.title }"
+      >
+        { item.title }
+      </a>
+    </template>
   </div>
   <script>
     import { tryCall } from '../../mixins/utilities';

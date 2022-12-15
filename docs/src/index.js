@@ -7,7 +7,6 @@ import '../../src/material-elements/material-card/material-card.scss';
 import '../../src/material-elements/material-checkbox/material-checkbox.scss';
 import '../../src/material-elements/material-combo/material-combo.scss';
 import '../../src/material-elements/material-dropdown/material-dropdown.scss';
-import '../../src/material-elements/material-dropdown-list/material-dropdown-list.scss';
 import '../../src/material-elements/material-footer/material-footer.scss';
 import '../../src/material-elements/material-input/material-input.scss';
 import '../../src/material-elements/material-navbar/material-navbar.scss';

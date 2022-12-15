@@ -42,6 +42,13 @@ material-dropdown {
         @include vendor-prefix(transition, 'transform .2s cubic-bezier(0.23, 1, 0.32, 1),opacity .2s');
       }
     }
+    a.material-dropdown-item {
+      text-decoration: none;
+      color: $material-dropdown-color;
+      &.selected {
+        color: $material-dropdown-background;
+      }
+    }
     .material-dropdown-item {
       cursor: pointer;
       background-color: $material-dropdown-background;
@@ -55,18 +62,10 @@ material-dropdown {
         background-color: darken($material-dropdown-background, 7);
         @include vendor-prefix(transition, 'background-color .2s ease-out');
       }
-      a,
-      span {
-        text-decoration: none;
-        color: $material-dropdown-color;
-      }
       &.selected {
         background-color: lighten($material-dropdown-color, 10);
         @include vendor-prefix(transition, 'background-color .2s ease-out');
-        span,
-        a {
-          color: $material-dropdown-background;
-        }
+        color: $material-dropdown-background;
       }
     }
   }
