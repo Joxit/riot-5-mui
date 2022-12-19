@@ -1,0 +1,106 @@
+<card>
+  <h1>Material Dropdown</h1>
+  <p>The API documentation of the Riot MUI Dropdown component.</p>
+  <h2>Import</h2>
+  <pre class="language-js">import { MaterialDropdown } from 'riot-mui';</pre>
+
+  <h2>Simple Dropdown</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <div class="material-dropdown-wrapper">
+          <material-button
+            onClick="{
+      () => {
+        this.dropdownOneOpen = !this.dropdownOneOpen
+        this.update();
+      }
+    }"
+          >
+            Open Dropdown
+          </material-button>
+          <material-dropdown
+            opened="{ this.dropdownOneOpen }"
+            on-click="{ (e) => console.log(e.target.item, e.target.index) }"
+          >
+            <div class="material-dropdown-item" item="first">First Item</div>
+            <div class="material-dropdown-item" item="second">Second Item</div>
+            <div class="material-dropdown-item" item="third">Third Item</div>
+            <div class="material-dropdown-item" item="fourth">Fourth Item</div>
+          </material-dropdown>
+        </div>
+        <div class="material-dropdown-wrapper">
+          <material-button
+            onClick="{
+      () => {
+        this.dropdownTwoOpen = !this.dropdownTwoOpen
+        this.update();
+      }
+    }"
+          >
+            Open Dropdown
+          </material-button>
+          <material-dropdown
+            opened="{ this.dropdownTwoOpen }"
+            items="{ [{title: 'First Item'}, {title: 'Second Item', href: '#!dropdown'}] }"
+            on-click="{
+      (e) => {
+        this.itemSelected = e.target.index;
+        this.dropdownTwoOpen = !this.dropdownTwoOpen;
+        this.update();
+      }
+    }"
+            selected="{ this.itemSelected }"
+          >
+          </material-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
+
+  <h2>Classes</h2>
+  <props-table kind="classes" properties="{ classes }"></props-table>
+
+  <script>
+    import { MaterialWaves, MaterialButton, MaterialDropdown } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialButton,
+        MaterialWaves,
+        MaterialDropdown,
+        PropsTable,
+      },
+      properties: [
+        {
+          name: 'opened',
+          type: 'boolean',
+          default: 'false',
+          description: 'Toggle open and close of the dropdown.',
+        },
+        {
+          name: 'items',
+          type: 'array',
+          default: '',
+          description: `Use a json array to fill the dropdown. [{title: 'Item Shown Label', name: 'Item-Name', href: 'https://link'}]`,
+        },
+        {
+          name: 'on-click',
+          type: 'function',
+          default: '',
+          description: 'Set a callback function for on-click event. The first parameter is an Event and the target contains `item` and `idx` properties.',
+        },
+      ],
+      classes: [
+        {
+          name: 'material-dropdown-item',
+          description: 'Class to use on a dropdown item when you do not use the items property.',
+        },
+      ]
+    };
+  </script>
+</card>
