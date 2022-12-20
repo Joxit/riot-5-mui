@@ -69,10 +69,18 @@
     <div class="example-rendered">
       <div class="example-row">
         <material-input label="Text Input">Default</material-input>
-        <material-input label="Text Input" color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
-        <material-input label="Text Input" inverted color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
-        <material-input label="Text Input" outlined color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
-        <material-input label="Text Input" rounded color="#ffdc7d" text-color="#f14668">Custom Color</material-input>
+        <material-input label="Text Input" color="#ffdc7d" text-color="#f14668" label-color="#2f6975">
+          Custom Color
+        </material-input>
+        <material-input label="Text Input" inverted color="#ffdc7d" text-color="#f14668" label-color="#2f6975">
+          Custom Color
+        </material-input>
+        <material-input label="Text Input" outlined color="#ffdc7d" text-color="#f14668" label-color="#2f6975">
+          Custom Color
+        </material-input>
+        <material-input label="Text Input" rounded color="#ffdc7d" text-color="#f14668" label-color="#2f6975">
+          Custom Color
+        </material-input>
         <material-input label="Text Input" disabled>Disabled</material-input>
       </div>
     </div>
@@ -172,6 +180,12 @@
           type: 'string',
           default: '',
           description: 'Set a custom color for the text of the input.',
+        },
+        {
+          name: 'label-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the label of the input.',
         },
         {
           name: 'outlined',
