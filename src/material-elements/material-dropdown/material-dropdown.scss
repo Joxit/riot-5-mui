@@ -14,9 +14,8 @@ $material-dropdown-offset: 50px;
 }
 
 material-dropdown {
-  z-index: 100;
-  min-width: $material-dropdown-min-width;
   .material-dropdown-container {
+    z-index: 100;
     background-color: $material-dropdown-background;
     margin: 0;
     padding: 0.5em 0;
