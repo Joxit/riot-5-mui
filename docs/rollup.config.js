@@ -1,7 +1,7 @@
 import riot from 'rollup-plugin-riot';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import { emptyDirectories } from 'rollup-plugin-app-utils';
 import { babel } from '@rollup/plugin-babel';
 import scss from 'rollup-plugin-scss';
@@ -11,6 +11,7 @@ import injectSnippet from './rollup/inject-snippet.js';
 import injectIds from './rollup/inject-ids.js';
 
 const useServe = process.env.ROLLUP_SERVE === 'true';
+const port = process.env.ROLLUP_PORT || 8000;
 const output = useServe ? '.serve' : 'build';
 
 let plugins = [
@@ -25,7 +26,7 @@ let plugins = [
 ];
 
 if (useServe) {
-  plugins[serve({ host: 'localhost', port: 8000, contentBase: [output, './'] })];
+  plugins[serve({ host: 'localhost', port, contentBase: [output, './'] })];
   plugins.push({
     name: 'html',
     generateBundle: () => {
