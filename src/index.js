@@ -9,6 +9,7 @@ import MaterialNavbar from './material-elements/material-navbar/material-navbar.
 import MaterialPopup from './material-elements/material-popup/material-popup.riot';
 import MaterialSnackbar from './material-elements/material-snackbar/material-snackbar.riot';
 import MaterialSpinner from './material-elements/material-spinner/material-spinner.riot';
+import MaterialSwitch from './material-elements/material-switch/material-switch.riot';
 import MaterialTabs from './material-elements/material-tabs/material-tabs.riot';
 import MaterialWaves from './material-elements/material-waves/material-waves.riot';
 
@@ -23,5 +24,6 @@ export { MaterialNavbar };
 export { MaterialPopup };
 export { MaterialSnackbar };
 export { MaterialSpinner };
+export { MaterialSwitch };
 export { MaterialTabs };
 export { MaterialWaves };

@@ -1,0 +1,52 @@
+$material-switch-color: #fff;
+$material-switch-checked-color: #318896;
+$material-switch-background-checked-color: #61bdcc;
+$material-switch-background-color: #999;
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+material-switch {
+  .material-switch-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    position: relative;
+
+    .material-switch-toggle {
+      display: inline-flex;
+      position: absolute;
+      left: 0.25em;
+      width: 1.75em;
+      height: 1.75em;
+      border-radius: 50vw;
+      background-color: $material-switch-color;
+      @include vendor-prefix(transition, 'transform .4s');
+    }
+
+    .material-switch-track {
+      display: inline-flex;
+      border-radius: 50vw;
+      height: 2em;
+      width: 4em;
+      background-color: $material-switch-background-color;
+      border-style: solid;
+      border-width: 0.1em;
+      border-color: $material-switch-background-color;
+    }
+    &[checked] {
+      .material-switch-toggle {
+        transform: translateX(2em);
+        background-color: $material-switch-checked-color;
+      }
+      .material-switch-track {
+        background-color: $material-switch-background-checked-color;
+        border-color: $material-switch-background-checked-color;
+      }
+    }
+  }
+}

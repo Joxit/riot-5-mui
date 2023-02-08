@@ -1,0 +1,28 @@
+<material-switch>
+  <span class="material-switch-container" checked="{ state.checked }" onclick="{ onChange }">
+    <span class="material-switch-toggle"></span>
+    <span class="material-switch-track"></span>
+  </span>
+  <script>
+    import { attributeToBool, tryCall } from '../../mixins/utilities';
+    export default {
+      onBeforeMount(props, state) {
+        state.checked = props.checked !== undefined ? props.checked : state.checked;
+      },
+      onBeforeUpdate(props, state) {
+        state.checked = props.checked !== undefined ? props.checked : state.checked;
+      },
+      onChange(event) {
+        if (attributeToBool(this.props.disabled)) {
+          return;
+        }
+        event.target.checked = !this.state.checked;
+        tryCall(this.props.onChange, event);
+        this.update({
+          checked: !this.state.checked,
+        });
+      },
+      attributeToBool,
+    };
+  </script>
+</material-switch>

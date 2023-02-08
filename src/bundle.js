@@ -16,6 +16,7 @@ import './material-elements/material-navbar/material-navbar.scss';
 import './material-elements/material-popup/material-popup.scss';
 import './material-elements/material-snackbar/material-snackbar.scss';
 import './material-elements/material-spinner/material-spinner.scss';
+import './material-elements/material-switch/material-switch.scss';
 import './material-elements/material-tabs/material-tabs.scss';
 import './material-elements/material-waves/material-waves.scss';
 
@@ -30,5 +31,6 @@ register('material-navbar', mui.MaterialNavbar);
 register('material-popup', mui.MaterialPopup);
 register('material-snackbar', mui.MaterialSnackbar);
 register('material-spinner', mui.MaterialSpinner);
+register('material-switch', mui.MaterialSwitch);
 register('material-tabs', mui.MaterialTabs);
 register('material-waves', mui.MaterialWaves);

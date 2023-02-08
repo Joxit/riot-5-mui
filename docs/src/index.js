@@ -13,6 +13,7 @@ import '../../src/material-elements/material-navbar/material-navbar.scss';
 import '../../src/material-elements/material-popup/material-popup.scss';
 import '../../src/material-elements/material-snackbar/material-snackbar.scss';
 import '../../src/material-elements/material-spinner/material-spinner.scss';
+import '../../src/material-elements/material-switch/material-switch.scss';
 import '../../src/material-elements/material-tabs/material-tabs.scss';
 import '../../src/material-elements/material-waves/material-waves.scss';
 
