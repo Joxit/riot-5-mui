@@ -19,8 +19,20 @@
         event.target.checked = !this.state.checked;
         tryCall(this.props.onChange, event);
         this.update({
-          checked: !this.state.checked,
+          checked: this.checkedValue(),
         });
+      },
+      checkedValue() {
+        const supportIntermediate = attributeToBool(this.props.intermediate);
+        console.log(supportIntermediate, this.props.intermediate);
+        if (!supportIntermediate) {
+          return !this.state.checked;
+        }
+        if (this.state.checked === true || !this.state.checked) {
+          this.oldValue = this.state.checked;
+          return 'intermediate';
+        }
+        return !this.oldValue;
       },
       attributeToBool,
     };

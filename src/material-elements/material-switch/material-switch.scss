@@ -49,4 +49,21 @@ material-switch {
       }
     }
   }
+  &[intermediate] .material-switch-container {
+    &[checked] {
+      .material-switch-toggle {
+        transform: translateX(2em);
+        background-color: $material-switch-checked-color;
+      }
+      .material-switch-track {
+        background-color: $material-switch-background-checked-color;
+        border-color: $material-switch-background-checked-color;
+      }
+    }
+    &[checked='intermediate'] {
+      .material-switch-toggle {
+        transform: translateX(1em);
+      }
+    }
+  }
 }
