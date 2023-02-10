@@ -17,7 +17,7 @@ material-switch {
     align-items: center;
     position: relative;
 
-    .material-switch-toggle {
+    .material-switch-thumb {
       display: inline-flex;
       position: absolute;
       left: 0.25em;
@@ -39,7 +39,7 @@ material-switch {
       border-color: $material-switch-background-color;
     }
     &[checked] {
-      .material-switch-toggle {
+      .material-switch-thumb {
         transform: translateX(2em);
         background-color: $material-switch-checked-color;
       }
@@ -51,7 +51,7 @@ material-switch {
   }
   &[intermediate] .material-switch-container {
     &[checked] {
-      .material-switch-toggle {
+      .material-switch-thumb {
         transform: translateX(2em);
         background-color: $material-switch-checked-color;
       }
@@ -61,7 +61,7 @@ material-switch {
       }
     }
     &[checked='intermediate'] {
-      .material-switch-toggle {
+      .material-switch-thumb {
         transform: translateX(1em);
       }
     }
