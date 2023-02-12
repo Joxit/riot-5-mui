@@ -7,10 +7,16 @@
     import { attributeToBool, tryCall } from '../../mixins/utilities';
     export default {
       onBeforeMount(props, state) {
-        state.checked = props.checked !== undefined ? props.checked : state.checked;
+        this.defaultUpdates(props, state);
       },
       onBeforeUpdate(props, state) {
+        this.defaultUpdates(props, state);
+      },
+      defaultUpdates(props, state) {
         state.checked = props.checked !== undefined ? props.checked : state.checked;
+        if (props.size && typeof props.size === 'string') {
+          this.root.style['font-size'] = props.size;
+        }
       },
       onChange(event) {
         if (attributeToBool(this.props.disabled)) {
