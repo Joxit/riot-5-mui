@@ -7,16 +7,24 @@
     import { attributeToBool, tryCall } from '../../mixins/utilities';
     export default {
       onBeforeMount(props, state) {
-        this.defaultUpdates(props, state);
+        this.updateAttributes(props, state);
       },
       onBeforeUpdate(props, state) {
-        this.defaultUpdates(props, state);
+        this.updateAttributes(props, state);
       },
-      defaultUpdates(props, state) {
+      updateAttributes(props, state) {
         state.checked = props.checked !== undefined ? props.checked : state.checked;
         if (props.size && typeof props.size === 'string') {
           this.root.style['font-size'] = props.size;
         }
+        const track = this.$('span.material-switch-track');
+        const thumb = this.$('span.material-switch-thumb');
+
+        const trackColor = (state.checked ? props.trackSelectedColor : props.trackColor) || null;
+        const thumbColor = (state.checked ? props.thumbSelectedColor : props.thumbColor) || null;
+
+        track && ((track.style['background-color'] = trackColor) || delete track.style['background-color']);
+        thumb && (thumb.style['background-color'] = thumbColor);
       },
       onChange(event) {
         if (attributeToBool(this.props.disabled)) {
@@ -30,7 +38,7 @@
       },
       checkedValue() {
         const supportIntermediate = attributeToBool(this.props.intermediate);
-        console.log(supportIntermediate, this.props.intermediate);
+
         if (!supportIntermediate) {
           return !this.state.checked;
         }
