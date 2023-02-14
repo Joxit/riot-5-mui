@@ -22,8 +22,10 @@
 
         const trackColor = (state.checked ? props.trackSelectedColor : props.trackColor) || null;
         const thumbColor = (state.checked ? props.thumbSelectedColor : props.thumbColor) || null;
+        const outlineColor = (state.checked ? props.outlineSelectedColor : props.outlineColor) || null;
 
-        track && ((track.style['background-color'] = trackColor) || delete track.style['background-color']);
+        track && (track.style['background-color'] = trackColor);
+        track && (track.style['border-color'] = outlineColor);
         thumb && (thumb.style['background-color'] = thumbColor);
       },
       onChange(event) {
