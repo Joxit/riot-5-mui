@@ -27,6 +27,14 @@ material-switch {
       border-radius: 50vw;
       background-color: $material-switch-color;
       @include vendor-prefix(transition, 'transform .4s');
+      &:has(*) {
+        left: 0.1em;
+        width: 1em;
+        height: 1em;
+      }
+      & * {
+        margin: auto;
+      }
     }
 
     .material-switch-track {

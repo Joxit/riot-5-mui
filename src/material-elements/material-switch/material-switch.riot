@@ -1,6 +1,9 @@
 <material-switch>
   <span class="material-switch-container" checked="{ state.checked }" onclick="{ onChange }">
-    <span class="material-switch-thumb"></span>
+    <span class="material-switch-thumb">
+      <template if="{ !state.checked }"><slot name="thumb-icon"></slot></template>
+      <template if="{ state.checked }"><slot name="thumb-selected-icon"></slot></template>
+    </span>
     <span class="material-switch-track"></span>
   </span>
   <script>
