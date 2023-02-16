@@ -1,7 +1,10 @@
-$material-switch-color: #fff;
-$material-switch-checked-color: #318896;
-$material-switch-background-checked-color: #61bdcc;
-$material-switch-background-color: #999;
+$material-switch-color: #79747E;
+$material-switch-checked-color: #fff;
+$material-switch-background-checked-color: #6750A4;
+$material-switch-background-color: #E7E0EC;
+$material-switch-outline-color: #79747E;
+$material-switch-outline-selected-color: #6750A4;
+
 @mixin vendor-prefix($name, $argument) {
   -webkit-#{$name}: #{$argument};
   -ms-#{$name}: #{$argument};
@@ -29,7 +32,7 @@ material-switch {
       @include vendor-prefix(transition, 'transform .4s');
       z-index: 1;
       &:has(*) {
-        left: 0.1em;
+        left: 0.06em;
         width: 1em;
         height: 1em;
       }
@@ -46,7 +49,7 @@ material-switch {
       background-color: $material-switch-background-color;
       border-style: solid;
       border-width: 0.1em;
-      border-color: $material-switch-background-color;
+      border-color: $material-switch-outline-color;
     }
     &[checked] {
       .material-switch-thumb {
@@ -58,7 +61,7 @@ material-switch {
       }
       .material-switch-track {
         background-color: $material-switch-background-checked-color;
-        border-color: $material-switch-background-checked-color;
+        border-color: $material-switch-outline-selected-color;
       }
     }
   }
@@ -73,7 +76,7 @@ material-switch {
       }
       .material-switch-track {
         background-color: $material-switch-background-checked-color;
-        border-color: $material-switch-background-checked-color;
+        border-color: $material-switch-outline-selected-color;
       }
     }
     &[checked='intermediate'] {
