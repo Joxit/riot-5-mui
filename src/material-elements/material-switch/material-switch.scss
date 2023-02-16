@@ -27,6 +27,7 @@ material-switch {
       border-radius: 50vw;
       background-color: $material-switch-color;
       @include vendor-prefix(transition, 'transform .4s');
+      z-index: 1;
       &:has(*) {
         left: 0.1em;
         width: 1em;
@@ -80,6 +81,25 @@ material-switch {
         transform: translateX(0.5em);
         width: 0.85em;
         height: 0.85em;
+      }
+    }
+  }
+  &[disabled] .material-switch-container {
+    .material-switch-track {
+      opacity: 0.12;
+      border-color: #1C1B1F;
+    }
+    .material-switch-thumb {
+      opacity: 0.38;
+      background-color: #1C1B1F;
+    }
+    &[checked] {
+      .material-switch-track {
+        background-color: #1C1B1F;
+      }
+      .material-switch-thumb {
+        opacity: 1;
+        background-color: #FFFBFE;
       }
     }
   }
