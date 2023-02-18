@@ -53,7 +53,7 @@ material-switch {
     }
     &[checked] {
       .material-switch-thumb {
-        transform: translateX(1em);
+        transform: translateX(0.95em);
         background-color: $material-switch-checked-color;
         left: 0.1em;
         width: 1em;
@@ -71,7 +71,7 @@ material-switch {
     }
     &[checked] {
       .material-switch-thumb {
-        transform: translateX(1em);
+        transform: translateX(0.95em);
         background-color: $material-switch-checked-color;
       }
       .material-switch-track {
