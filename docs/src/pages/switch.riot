@@ -1,0 +1,66 @@
+<switch>
+  <h1>Material Switch</h1>
+  <p>The API documentation of the Riot MUI Switch component.</p>
+  <h2>Import</h2>
+  <pre class="language-js">import { MaterialSwitch } from 'riot-mui';</pre>
+
+  <h2>Default Switch</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-switch onChange="{ (e) => console.log(e) }"></material-switch>
+        <material-switch></material-switch>
+        <material-switch intermediate onChange="{ (e) => console.log(e) }"></material-switch>
+        <material-switch checked="{true}"></material-switch>
+        <material-switch disabled></material-switch>
+        <material-switch disabled checked="{ true }"></material-switch>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+  <h2>Some configurations</h2>
+  <div class="example-container">
+    <div class="example-rendered">
+      <div class="example-row">
+        <material-switch size="42px"></material-switch>
+        <material-switch
+          thumb-color="#938F99"
+          thumb-selected-color="#371E73"
+          track-color="#49454F"
+          track-selected-color="#D0BCFF"
+          outline-color="#938F99"
+          outline-selected-color="#D0BCFF"
+        ></material-switch>
+        <material-switch>
+          <svg width="16px" height="16px" viewBox="0 0 78.369 78.369" slot="thumb-selected-icon">
+            <path
+              fill="#6750A4"
+              d="M78.049 19.015L29.458 67.606a1.094 1.094 0 01-1.548 0L.32 40.015a1.094 1.094 0 010-1.547l6.704-6.704a1.095 1.095 0 011.548 0l20.113 20.112 41.113-41.113a1.095 1.095 0 011.548 0l6.703 6.704a1.094 1.094 0 010 1.548z"
+            />
+          </svg>
+          <svg width="16px" height="16px" viewBox="0 0 24 24" slot="thumb-icon">
+            <path
+              d="M19 5L5 19M5 5l14 14"
+              stroke="#E7E0EC"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </material-switch>
+      </div>
+    </div>
+    <div class="example-code"></div>
+  </div>
+
+  <script>
+    import { MaterialSwitch } from 'riot-mui';
+    import PropsTable from '../components/props-table.riot';
+    export default {
+      components: {
+        MaterialSwitch,
+        PropsTable,
+      },
+    };
+  </script>
+</switch>
