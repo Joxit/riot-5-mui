@@ -8,9 +8,9 @@
   <div class="example-container">
     <div class="example-rendered">
       <div class="example-row">
-        <material-switch onChange="{ (e) => console.log(e) }"></material-switch>
+        <material-switch on-change="{ (e) => console.log(e) }"></material-switch>
         <material-switch></material-switch>
-        <material-switch intermediate onChange="{ (e) => console.log(e) }"></material-switch>
+        <material-switch intermediate on-change="{ (e) => console.log(e) }"></material-switch>
         <material-switch checked="{true}"></material-switch>
         <material-switch disabled></material-switch>
         <material-switch disabled checked="{ true }"></material-switch>
@@ -52,6 +52,8 @@
     </div>
     <div class="example-code"></div>
   </div>
+  <h2>Props</h2>
+  <props-table properties="{ properties }"></props-table>
 
   <script>
     import { MaterialSwitch } from 'riot-mui';
@@ -61,6 +63,68 @@
         MaterialSwitch,
         PropsTable,
       },
+      properties: [
+        {
+          name: 'on-change',
+          type: 'function',
+          default: '',
+          description: 'Set a callback function for on-change event. The first parameter is an Event. The value of the state is located in `e.target.checked` and can be `true`, `false` or `intermediate`.',
+        },
+        {
+          name: 'intermediate',
+          type: 'boolean',
+          default: 'false',
+          description: 'Add a third intermediate state, between true and false.',
+        },
+        {
+          name: 'checked',
+          type: 'boolean',
+          default: '',
+          description: 'Either `true` or `false` or `intermediate`, use this property to manage the state of the switch.',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          default: '',
+          description: 'Disable the switch, this will remove all callbacks and change the UI.',
+        },
+        {
+          name: 'thumb-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the thumb of the switch.',
+        },
+        {
+          name: 'thumb-selected-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the thumb of the switch when selected.',
+        },
+        {
+          name: 'track-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the track (background) of the switch.',
+        },
+        {
+          name: 'track-selected-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the track (background) of the switch when selected.',
+        },
+        {
+          name: 'outline-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the outline of the switch.',
+        },
+        {
+          name: 'outline-selected-color',
+          type: 'string',
+          default: '',
+          description: 'Set a custom color for the outline of the switch when selected.',
+        },
+      ]
     };
   </script>
 </switch>
