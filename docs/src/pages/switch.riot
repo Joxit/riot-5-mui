@@ -55,6 +55,9 @@
   <h2>Props</h2>
   <props-table properties="{ properties }"></props-table>
 
+  <h2>Classes</h2>
+  <props-table properties="{ classes }" kind="classes"></props-table>
+
   <script>
     import { MaterialSwitch } from 'riot-mui';
     import PropsTable from '../components/props-table.riot';
@@ -68,7 +71,8 @@
           name: 'on-change',
           type: 'function',
           default: '',
-          description: 'Set a callback function for on-change event. The first parameter is an Event. The value of the state is located in `e.target.checked` and can be `true`, `false` or `intermediate`.',
+          description:
+            'Set a callback function for on-change event. The first parameter is an Event. The value of the state is located in `e.target.checked` and can be `true`, `false` or `intermediate`.',
         },
         {
           name: 'intermediate',
@@ -80,7 +84,8 @@
           name: 'checked',
           type: 'boolean',
           default: '',
-          description: 'Either `true` or `false` or `intermediate`, use this property to manage the state of the switch.',
+          description:
+            'Either `true` or `false` or `intermediate`, use this property to manage the state of the switch.',
         },
         {
           name: 'disabled',
@@ -124,7 +129,21 @@
           default: '',
           description: 'Set a custom color for the outline of the switch when selected.',
         },
-      ]
+      ],
+      classes: [
+        {
+          name: 'material-switch-container',
+          description: 'This is the container of the switch.',
+        },
+        {
+          name: 'material-switch-thumb',
+          description: 'Style for the thumb, you can change the `background-color`.',
+        },
+        {
+          name: 'material-switch-track',
+          description: 'Style for the track, you can change the `background-color` and `border-color`.',
+        },
+      ],
     };
   </script>
 </switch>
