@@ -27,17 +27,18 @@ let plugins = [
 
 if (useServe) {
   plugins[serve({ host: 'localhost', port, contentBase: [output, './'] })];
-  plugins.push({
-    name: 'html',
-    generateBundle: () => {
-      console.log(`Move index.html to ${output}/index.html`);
-      const html = fs.readFileSync('index.html', 'utf-8');
-      fs.writeFileSync(`${output}/index.html`, html);
-    },
-  });
 } else {
   plugins.push(terser());
 }
+
+plugins.push({
+  name: 'html',
+  generateBundle: () => {
+    console.log(`Move index.html to ${output}/index.html`);
+    const html = fs.readFileSync('index.html', 'utf-8');
+    fs.writeFileSync(`${output}/index.html`, html);
+  },
+});
 
 export default [
   {
