@@ -31,7 +31,7 @@ material-switch {
       background-color: $material-switch-color;
       @include vendor-prefix(transition, 'transform .4s');
       z-index: 1;
-      &:has(*) {
+      &.material-switch-thumb-w-icon {
         left: 0.2em;
         width: 1em;
         height: 1em;

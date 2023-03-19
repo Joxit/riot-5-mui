@@ -32,7 +32,14 @@
 
         track && (track.style['background-color'] = trackColor);
         track && (track.style['border-color'] = outlineColor);
-        thumb && (thumb.style['background-color'] = thumbColor);
+        if (thumb) {
+          thumb.style['background-color'] = thumbColor;
+          if (thumb.children.length > 0) {
+            thumb.classList.add('material-switch-thumb-w-icon');
+          } else {
+            thumb.classList.remove('material-switch-thumb-w-icon');
+          }
+        }
       },
       onChange(event) {
         if (attributeToBool(this.props.disabled)) {
